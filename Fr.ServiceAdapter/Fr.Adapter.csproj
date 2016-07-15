@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBE8B028-1AFE-4902-8DD3-9C50D1CC7B68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fr.Adapter</RootNamespace>
+    <AssemblyName>Fr.Adapter</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MapperConfig.cs" />
+    <Compile Include="System\SysAgentAdapter.cs" />
+    <Compile Include="System\SysCompanyAdapter.cs" />
+    <Compile Include="System\SysDepartmentAdapter.cs" />
+    <Compile Include="System\SysPowerAdapter.cs" />
+    <Compile Include="System\SysRoleAdapter.cs" />
+    <Compile Include="System\SysUserRolePowerAdapter.cs" />
+    <Compile Include="System\SysUserRoleService.cs" />
+    <Compile Include="System\SysUserService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fr.Dto\Fr.Dto.csproj">
+      <Project>{5c1f5d90-3452-4f89-9da8-b695d3780e7c}</Project>
+      <Name>Fr.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fr.IServiceAdapter\Fr.IAdapter.csproj">
+      <Project>{f4633bb7-aece-43a8-a58c-c95ffb28e05c}</Project>
+      <Name>Fr.IAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fr.IService\Fr.IService.csproj">
+      <Project>{fc31c977-b1c4-4201-9fc4-5b2d7472fc87}</Project>
+      <Name>Fr.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fr.Model\Fr.Model.csproj">
+      <Project>{35d7d4d5-aa75-45a0-96ad-394238cefa20}</Project>
+      <Name>Fr.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fr.Service\Fr.Service.csproj">
+      <Project>{3418c73d-21a4-4397-aaff-499b079d2f01}</Project>
+      <Name>Fr.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fr.Utilily\Fr.Utilily.csproj">
+      <Project>{ce3e0691-3cb8-4f1f-ab2b-e3728f522628}</Project>
+      <Name>Fr.Utilily</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
