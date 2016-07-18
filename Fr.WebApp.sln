@@ -38,6 +38,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fr.Generate", "Fr.ServiceGen\Fr.Generate.csproj", "{B5BD8A7E-58A2-452D-B9A5-E2571D24A7F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{736F0A4A-AB93-422D-8BBF-2149C8BB5AE5}"
+	ProjectSection(SolutionItems) = preProject
+		lib\AutoMapper.4.0.4\lib\net40\AutoMapper.dll = lib\AutoMapper.4.0.4\lib\net40\AutoMapper.dll
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fr.Adapter", "Fr.ServiceAdapter\Fr.Adapter.csproj", "{DBE8B028-1AFE-4902-8DD3-9C50D1CC7B68}"
 EndProject
