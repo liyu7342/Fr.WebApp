@@ -51,8 +51,14 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\ISysAgentService.cs" />
+    <Compile Include="System\ISysButtonPermissionService.cs" />
+    <Compile Include="System\ISysButtonService.cs" />
     <Compile Include="System\ISysCompanyService.cs" />
     <Compile Include="System\ISysDepartmentService.cs" />
+    <Compile Include="System\ISysLogDetailService.cs" />
+    <Compile Include="System\ISysLogService.cs" />
+    <Compile Include="System\ISysMenuPermissionService.cs" />
+    <Compile Include="System\ISysMenuService.cs" />
     <Compile Include="System\ISysPowerService.cs" />
     <Compile Include="System\ISysRoleService.cs" />
     <Compile Include="System\ISysUserRolePowerService.cs" />

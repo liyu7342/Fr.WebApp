@@ -16,8 +16,16 @@ namespace Fr.Service
     using System.Collections.Generic;
     
     public partial class SysAgentService:ISysAgentService
-    {
-     
+    { 
+    	ISysAgentRepository _repository ;
+    
+    	/// <summary>
+    	/// 构造函数注入
+    	/// </summary>
+    	/// <param name="repository"></param>
+    	public SysAgentService(ISysAgentRepository repository){
+    		_repository = repository;
+    	} 
     }
 	
 }

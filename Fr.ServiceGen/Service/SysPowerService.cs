@@ -16,8 +16,16 @@ namespace Fr.Service
     using System.Collections.Generic;
     
     public partial class SysPowerService:ISysPowerService
-    {
-     
+    { 
+    	ISysPowerRepository _repository ;
+    
+    	/// <summary>
+    	/// 构造函数注入
+    	/// </summary>
+    	/// <param name="repository"></param>
+    	public SysPowerService(ISysPowerRepository repository){
+    		_repository = repository;
+    	} 
     }
 	
 }

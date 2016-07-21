@@ -17,5 +17,11 @@ namespace Fr
         public string UserRoleId { get; set; }
         public string RoleId { get; set; }
         public string UserId { get; set; }
+        public Nullable<System.DateTime> CreateTime { get; set; }
+        public string CreateUserId { get; set; }
+        public string CreateUserName { get; set; }
+        public Nullable<System.DateTime> ModifyTime { get; set; }
+        public string ModifyUserId { get; set; }
+        public string ModifyUserName { get; set; }
     }
 }

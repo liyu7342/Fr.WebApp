@@ -16,8 +16,16 @@ namespace Fr.Service
     using System.Collections.Generic;
     
     public partial class SysRoleService:ISysRoleService
-    {
-     
+    { 
+    	ISysRoleRepository _repository ;
+    
+    	/// <summary>
+    	/// 构造函数注入
+    	/// </summary>
+    	/// <param name="repository"></param>
+    	public SysRoleService(ISysRoleRepository repository){
+    		_repository = repository;
+    	} 
     }
 	
 }

@@ -22,18 +22,14 @@ namespace Fr.Adapter
         }
         private static void Init()
         {
-            Mapper.CreateMap<SysUser, SysUserDto>()
-                .ForMember(c => c.CreateUser, c => c.MapFrom(src => src.CreateUser == null ? "" : src.CreateUser.NickName))
-                .ForMember(c => c.ModifyUser, c => c.MapFrom(src => src.ModifyUser == null ? "" : src.ModifyUser.NickName))
+            Mapper.CreateMap<SysUser, SysUserDto>() 
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeString()))
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeString()));
             Mapper.CreateMap<SysUserDto, SysUser>()
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeNull()))
                 .ForMember(c => c.ModifyTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeNull()));
 
-            Mapper.CreateMap<SysRole, SysRoleDto>()
-                .ForMember(c => c.CreateUser, c => c.MapFrom(src => src.CreateUser == null ? "" : src.CreateUser.NickName))
-                .ForMember(c => c.ModifyUser, c => c.MapFrom(src => src.ModifyUser == null ? "" : src.ModifyUser.NickName))
+            Mapper.CreateMap<SysRole, SysRoleDto>() 
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeString()))
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeString()));
 

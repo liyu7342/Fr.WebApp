@@ -452,6 +452,10 @@
       <Project>{658f32c0-5ccb-48e3-b042-70fb26e8bf5a}</Project>
       <Name>Fr.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fr.Security\Fr.Security.csproj">
+      <Project>{2537da81-f1b7-4549-a779-536b3f8603dd}</Project>
+      <Name>Fr.Security</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fr.ServiceAdapter\Fr.Adapter.csproj">
       <Project>{dbe8b028-1afe-4902-8dd3-9c50d1cc7b68}</Project>
       <Name>Fr.Adapter</Name>

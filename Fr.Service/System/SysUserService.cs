@@ -19,12 +19,17 @@ namespace Fr.Service
     
     public partial class SysUserService:ISysUserService
     {
-      
+        ISysUserRepository _repository;
+
+        /// <summary>
+        /// 构造函数注入
+        /// </summary>
+        /// <param name="repository"></param>
         public SysUserService(ISysUserRepository repository)
         {
             _repository = repository;
         }
-        ISysUserRepository _repository;
+        
         public bool Add(SysUser user)
         {
             if (string.IsNullOrEmpty(user.UserId))

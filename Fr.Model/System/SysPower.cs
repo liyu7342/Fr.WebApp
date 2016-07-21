@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 功能Id
     	/// </summary>
-        [Key, StringLength(50)]
+    	[StringLength(50)]
     		
     	public string PowerId { get; set; }
     	/// <summary>
@@ -36,6 +36,40 @@ namespace Fr.Model
     	[StringLength(200)]
     		
     	public string PowerName { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    		
+    	public System.DateTime? CreateTime { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string CreateUserId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string CreateUserName { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    		
+    	public System.DateTime? ModifyTime { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string ModifyUserId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string ModifyUserName { get; set; }
     }
     
     internal class SysPowerConfig : EntityTypeConfiguration<SysPower>

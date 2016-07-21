@@ -51,8 +51,14 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\ISysAgentRepository.cs" />
+    <Compile Include="System\ISysButtonPermissionRepository.cs" />
+    <Compile Include="System\ISysButtonRepository.cs" />
     <Compile Include="System\ISysCompanyRepository.cs" />
     <Compile Include="System\ISysDepartmentRepository.cs" />
+    <Compile Include="System\ISysLogDetailRepository.cs" />
+    <Compile Include="System\ISysLogRepository.cs" />
+    <Compile Include="System\ISysMenuPermissionRepository.cs" />
+    <Compile Include="System\ISysMenuRepository.cs" />
     <Compile Include="System\ISysPowerRepository.cs" />
     <Compile Include="System\ISysRoleRepository.cs" />
     <Compile Include="System\ISysUserRepository.cs" />

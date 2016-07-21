@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 用户角色功能权限Id
     	/// </summary>
-        [Key, StringLength(50)]
+    	[StringLength(50)]
     		
     	public string UserRolePowerId { get; set; }
     	/// <summary>
@@ -36,6 +36,40 @@ namespace Fr.Model
     	[StringLength(50)]
     		
     	public string PowerId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    		
+    	public System.DateTime? CreateTime { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string CreateUserId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string CreateUserName { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    		
+    	public System.DateTime? ModifyTime { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string ModifyUserId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string ModifyUserName { get; set; }
     }
     
     internal class SysUserRolePowerConfig : EntityTypeConfiguration<SysUserRolePower>

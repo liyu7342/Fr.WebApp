@@ -63,6 +63,18 @@ namespace Fr.Model
     	[StringLength(50)]
     		
     	public string ModifyUserId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string CreateUserName { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string ModifyUserName { get; set; }
     }
     
     internal class SysRoleConfig : EntityTypeConfiguration<SysRole>

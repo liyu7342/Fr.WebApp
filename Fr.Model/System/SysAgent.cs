@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 代理Id
     	/// </summary>
-    	[Key,StringLength(50)]
+    	[StringLength(50)]
     		
     	public string AgentId { get; set; }
     	/// <summary>
@@ -35,39 +35,41 @@ namespace Fr.Model
     	/// </summary>
     	[StringLength(50)]
     		
-    	public string ParentId { get; set; } 
-
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-
-        public System.DateTime? CreateTime { get; set; }
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        [StringLength(50)]
-
-        public string CreateUserId { get; set; }
-
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        public SysUser CreateUser { get; set; }
-
-        /// <summary>
-        /// 修改时间
-        /// </summary>
-
-        public System.DateTime? ModifyTime { get; set; }
-        /// <summary>
-        /// 修改人
-        /// </summary>
-        [StringLength(50)]
-
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        public SysUser ModifyUser { get; set; }
+    	public string ParentId { get; set; }
+    	/// <summary>
+    	/// 创建时间
+    	/// </summary>
+    		
+    	public System.DateTime? CreateTime { get; set; }
+    	/// <summary>
+    	/// 创建人
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string CreateUserId { get; set; }
+    	/// <summary>
+    	/// 修改时间
+    	/// </summary>
+    		
+    	public System.DateTime? ModifyTime { get; set; }
+    	/// <summary>
+    	/// 修改人
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string ModifyUserId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string CreateUserName { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string ModifyUserName { get; set; }
     }
     
     internal class SysAgentConfig : EntityTypeConfiguration<SysAgent>
@@ -75,8 +77,6 @@ namespace Fr.Model
         SysAgentConfig()
         {
             ToTable("Sys_Agent");
-            base.HasOptional(c => c.CreateUser).WithMany().HasForeignKey(c => c.UserId);
-            base.HasOptional(c => c.ModifyUser).WithMany().HasForeignKey(c => c.UserId);
         }
     }
 }

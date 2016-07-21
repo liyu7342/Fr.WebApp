@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 角色Id
     	/// </summary>
-        [Key, StringLength(50)]
+    	[StringLength(50)]
     		
     	public string RoleId { get; set; }
     	/// <summary>
@@ -36,43 +36,45 @@ namespace Fr.Model
     	[StringLength(500)]
     		
     	public string Remark { get; set; }
-        /// <summary>
-        /// 状态
-        /// </summary>
-
-        public UserStateEnum Status { get; set; }
-
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-
-        public System.DateTime? CreateTime { get; set; }
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        [StringLength(50)]
-
-        public string CreateUserId { get; set; }
-
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        public SysUser CreateUser { get; set; }
-
-        /// <summary>
-        /// 修改时间
-        /// </summary>
-
-        public System.DateTime? ModifyTime { get; set; }
-        /// <summary>
-        /// 修改人
-        /// </summary>
-        [StringLength(50)]
-
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        public SysUser ModifyUser { get; set; }
+    	/// <summary>
+    	/// 状态
+    	/// </summary>
+    		
+    	public byte Status { get; set; }
+    	/// <summary>
+    	/// 创建时间
+    	/// </summary>
+    		
+    	public System.DateTime? CreateTime { get; set; }
+    	/// <summary>
+    	/// 创建人
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string CreateUserId { get; set; }
+    	/// <summary>
+    	/// 修改时间
+    	/// </summary>
+    		
+    	public System.DateTime? ModifyTime { get; set; }
+    	/// <summary>
+    	/// 修改人
+    	/// </summary>
+    	[StringLength(50)]
+    		
+    	public string ModifyUserId { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string CreateUserName { get; set; }
+    	/// <summary>
+    	/// 
+    	/// </summary>
+    	[StringLength(200)]
+    		
+    	public string ModifyUserName { get; set; }
     }
     
     internal class SysRoleConfig : EntityTypeConfiguration<SysRole>

@@ -53,8 +53,14 @@
     <Compile Include="Enums\UserState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\SysAgent.cs" />
+    <Compile Include="System\SysButton.cs" />
+    <Compile Include="System\SysButtonPermission.cs" />
     <Compile Include="System\SysCompany.cs" />
     <Compile Include="System\SysDepartment.cs" />
+    <Compile Include="System\SysLog.cs" />
+    <Compile Include="System\SysLogDetail.cs" />
+    <Compile Include="System\SysMenu.cs" />
+    <Compile Include="System\SysMenuPermission.cs" />
     <Compile Include="System\SysPower.cs" />
     <Compile Include="System\SysRole.cs" />
     <Compile Include="System\SysUser.cs" />

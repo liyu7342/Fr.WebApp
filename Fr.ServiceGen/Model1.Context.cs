@@ -33,5 +33,11 @@ namespace Fr
         public virtual DbSet<Sys_User> Sys_User { get; set; }
         public virtual DbSet<Sys_UserRole> Sys_UserRole { get; set; }
         public virtual DbSet<Sys_UserRole_Power> Sys_UserRole_Power { get; set; }
+        public virtual DbSet<Sys_Button> Sys_Button { get; set; }
+        public virtual DbSet<Sys_ButtonPermission> Sys_ButtonPermission { get; set; }
+        public virtual DbSet<Sys_Menu> Sys_Menu { get; set; }
+        public virtual DbSet<Sys_MenuPermission> Sys_MenuPermission { get; set; }
+        public virtual DbSet<Sys_Log> Sys_Log { get; set; }
+        public virtual DbSet<Sys_LogDetail> Sys_LogDetail { get; set; }
     }
 }

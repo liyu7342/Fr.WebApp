@@ -69,10 +69,28 @@
     <Compile Include="IRepositories\ISysAgentRepository.cs">
       <DependentUpon>IRepository1.tt</DependentUpon>
     </Compile>
+    <Compile Include="IRepositories\ISysButtonPermissionRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRepositories\ISysButtonRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
     <Compile Include="IRepositories\ISysCompanyRepository.cs">
       <DependentUpon>IRepository1.tt</DependentUpon>
     </Compile>
     <Compile Include="IRepositories\ISysDepartmentRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRepositories\ISysLogDetailRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRepositories\ISysLogRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRepositories\ISysMenuPermissionRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRepositories\ISysMenuRepository.cs">
       <DependentUpon>IRepository1.tt</DependentUpon>
     </Compile>
     <Compile Include="IRepositories\ISysPowerRepository.cs">
@@ -98,10 +116,28 @@
     <Compile Include="IService\ISysAgentService.cs">
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
+    <Compile Include="IService\ISysButtonPermissionService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\ISysButtonService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
     <Compile Include="IService\ISysCompanyService.cs">
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
     <Compile Include="IService\ISysDepartmentService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\ISysLogDetailService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\ISysLogService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\ISysMenuPermissionService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\ISysMenuService.cs">
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
     <Compile Include="IService\ISysPowerService.cs">
@@ -143,10 +179,28 @@
     <Compile Include="Model\SysAgent.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SysButton.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SysButtonPermission.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SysCompany.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SysDepartment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SysLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SysLogDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SysMenu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SysMenuPermission.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SysPower.cs">
@@ -174,10 +228,28 @@
     <Compile Include="Repositories\SysAgentRepository.cs">
       <DependentUpon>Repository1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\SysButtonPermissionRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SysButtonRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\SysCompanyRepository.cs">
       <DependentUpon>Repository1.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\SysDepartmentRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SysLogDetailRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SysLogRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SysMenuPermissionRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\SysMenuRepository.cs">
       <DependentUpon>Repository1.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\SysPowerRepository.cs">
@@ -203,10 +275,28 @@
     <Compile Include="Service\SysAgentService.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\SysButtonPermissionService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SysButtonService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service\SysCompanyService.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
     <Compile Include="Service\SysDepartmentService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SysLogDetailService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SysLogService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SysMenuPermissionService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SysMenuService.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
     <Compile Include="Service\SysPowerService.cs">
@@ -227,10 +317,28 @@
     <Compile Include="Sys_Agent.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys_Button.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sys_ButtonPermission.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sys_Company.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Sys_Department.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sys_Log.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sys_LogDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sys_Menu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sys_MenuPermission.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Sys_Power.cs">

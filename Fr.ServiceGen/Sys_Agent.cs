@@ -21,5 +21,7 @@ namespace Fr
         public string CreateUserId { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }
         public string ModifyUserId { get; set; }
+        public string CreateUserName { get; set; }
+        public string ModifyUserName { get; set; }
     }
 }

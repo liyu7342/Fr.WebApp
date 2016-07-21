@@ -13,6 +13,12 @@
         <EntityTypeShape EntityType="Fr_dbModel.Sys_User" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Fr_dbModel.Sys_UserRole" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Fr_dbModel.Sys_UserRole_Power" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fr_dbModel.Sys_Button" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Fr_dbModel.Sys_ButtonPermission" Width="1.5" PointX="7.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Fr_dbModel.Sys_Menu" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Fr_dbModel.Sys_MenuPermission" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Fr_dbModel.Sys_Log" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Fr_dbModel.Sys_LogDetail" Width="1.5" PointX="10.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

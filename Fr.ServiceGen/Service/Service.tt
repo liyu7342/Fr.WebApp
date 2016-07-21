@@ -29,8 +29,16 @@ using Fr.IRepositories;
 using Fr.Repositories;
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
 <#=codeStringGenerator.EntityClassOpening(entity)#>
-{
- 
+{ 
+	I<#=name#>Repository _repository ;
+
+	/// <summary>
+	/// 构造函数注入
+	/// </summary>
+	/// <param name="repository"></param>
+	public <#=name#>Service(I<#=name#>Repository repository){
+		_repository = repository;
+	} 
 }
 <#
     EndNamespace(code);
