@@ -63,6 +63,7 @@
     <Compile Include="System\SysMenuPermission.cs" />
     <Compile Include="System\SysPower.cs" />
     <Compile Include="System\SysRole.cs" />
+    <Compile Include="System\SysShortcuts.cs" />
     <Compile Include="System\SysUser.cs" />
     <Compile Include="System\SysUserRole.cs" />
     <Compile Include="System\SysUserRolePower.cs" />

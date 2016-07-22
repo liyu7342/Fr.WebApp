@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 公司Id
     	/// </summary>
-    	[StringLength(50)]
+        [StringLength(50), Key]
     		
     	public string CompanyId { get; set; }
     	/// <summary>

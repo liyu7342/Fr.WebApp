@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 
     	/// </summary>
-    	[StringLength(50)]
+        [StringLength(50), Key]
     		
     	public string MenuPermissionId { get; set; }
     	/// <summary>
@@ -35,7 +35,7 @@ namespace Fr.Model
     	/// </summary>
     	[StringLength(50)]
     		
-    	public string UserRoleId { get; set; }
+    	public string RoleId { get; set; }
     	/// <summary>
     	/// 
     	/// </summary>
@@ -45,8 +45,8 @@ namespace Fr.Model
     	/// 
     	/// </summary>
     	[StringLength(50)]
-    		
-    	public string Status { get; set; }
+
+        public StateEnum Status { get; set; }
     	/// <summary>
     	/// 
     	/// </summary>
@@ -87,13 +87,16 @@ namespace Fr.Model
     	[StringLength(200)]
     		
     	public string ModifyUserName { get; set; }
+
+        public SysMenu SysMenu { get; set; }
     }
     
     internal class SysMenuPermissionConfig : EntityTypeConfiguration<SysMenuPermission>
     {
         SysMenuPermissionConfig()
         {
-            ToTable("Sys_MenuPermission");
+            ToTable("Sys_MenuPermission"); 
+            HasOptional(x => x.SysMenu).WithMany().HasForeignKey(c => c.MenuId);
         }
     }
 }

@@ -10,28 +10,20 @@ using System.Web.Security;
 namespace Fr.Utilily
 {
     public static  class SysUserHelper
-    {
-        /// <summary>
-        /// 秘钥
-        /// </summary>
-        private static string LoginUserKey = "Fr.Utilily";
-
+    { 
         public static CurrentSysUser CurrentUser
         {
             get
-            {
-                
-                
+            { 
                 var str = CookieHelper.GetCookie(FormsAuthentication.FormsCookieName);
                 if(string.IsNullOrEmpty( str))
-                    throw new Exception("登录信息超时，请重新登录。");
-                CurrentSysUser user = JsonConvert.DeserializeObject<CurrentSysUser>(DESEncrypt.Decrypt(str)); 
+                    return null;
+                var ticket = FormsAuthentication.Decrypt(str);
+                if (ticket == null || string.IsNullOrEmpty(ticket.UserData))
+                    return null;
+                CurrentSysUser user = JsonConvert.DeserializeObject<CurrentSysUser>(ticket.UserData); 
                 return user; 
-            }
-            set
-            {
-                CookieHelper.WriteCookie(LoginUserKey, DESEncrypt.Encrypt(JsonConvert.SerializeObject(value)), 1440);
-            }
+            } 
         }
          
     }

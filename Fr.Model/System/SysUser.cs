@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 用户Id
     	/// </summary>
-    	[StringLength(50)]
+        [StringLength(50), Key]
     		
     	public string UserId { get; set; }
     	/// <summary>
@@ -70,7 +70,7 @@ namespace Fr.Model
     	/// 状态
     	/// </summary>
     		
-    	public byte Status { get; set; }
+    	public UserStateEnum Status { get; set; }
     	/// <summary>
     	/// 创建时间
     	/// </summary>

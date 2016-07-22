@@ -61,6 +61,7 @@
     <Compile Include="System\SysMenuService.cs" />
     <Compile Include="System\SysPowerService.cs" />
     <Compile Include="System\SysRoleService.cs" />
+    <Compile Include="System\SysShortcutsService.cs" />
     <Compile Include="System\SysUserRolePowerService.cs" />
     <Compile Include="System\SysUserRoleService.cs" />
     <Compile Include="System\SysUserService.cs" />
@@ -81,6 +82,10 @@
     <ProjectReference Include="..\Fr.Repository\Fr.Repositories.csproj">
       <Project>{658f32c0-5ccb-48e3-b042-70fb26e8bf5a}</Project>
       <Name>Fr.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fr.Utilily\Fr.Utilily.csproj">
+      <Project>{ce3e0691-3cb8-4f1f-ab2b-e3728f522628}</Project>
+      <Name>Fr.Utilily</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

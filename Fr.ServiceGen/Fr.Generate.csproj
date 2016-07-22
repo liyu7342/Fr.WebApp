@@ -59,7 +59,158 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\Adapter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysAgentAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysButtonAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysButtonPermissionAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysCompanyAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysDepartmentAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysLogAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysLogDetailAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysMenuAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysMenuPermissionAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysPowerAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysRoleAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysShortcutsAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysUserAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysUserRoleAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Adapter\SysUserRolePowerAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\Controller.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysAgentController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysButtonController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysButtonPermissionController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysCompanyController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysDepartmentController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysLogController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysLogDetailController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysMenuController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysMenuPermissionController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysPowerController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysRoleController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysShortcutsController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysUserController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysUserRoleController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\SysUserRolePowerController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\IAdapter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysAgentAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysButtonAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysButtonPermissionAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysCompanyAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysDepartmentAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysLogAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysLogDetailAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysMenuAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysMenuPermissionAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysPowerAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysRoleAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysShortcutsAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysUserAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysUserRoleAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysUserRolePowerAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
     <Compile Include="IRepositories\IRepository.cs" />
     <Compile Include="IRepositories\IRepository1.cs">
       <AutoGen>True</AutoGen>
@@ -97,6 +248,9 @@
       <DependentUpon>IRepository1.tt</DependentUpon>
     </Compile>
     <Compile Include="IRepositories\ISysRoleRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRepositories\ISysShortcutsRepository.cs">
       <DependentUpon>IRepository1.tt</DependentUpon>
     </Compile>
     <Compile Include="IRepositories\ISysUserRepository.cs">
@@ -144,6 +298,9 @@
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
     <Compile Include="IService\ISysRoleService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\ISysShortcutsService.cs">
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
     <Compile Include="IService\ISysUserRolePowerService.cs">
@@ -209,6 +366,9 @@
     <Compile Include="Model\SysRole.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SysShortcuts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SysUser.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -258,6 +418,9 @@
     <Compile Include="Repositories\SysRoleRepository.cs">
       <DependentUpon>Repository1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\SysShortcutsRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\SysUserRepository.cs">
       <DependentUpon>Repository1.tt</DependentUpon>
     </Compile>
@@ -305,6 +468,9 @@
     <Compile Include="Service\SysRoleService.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\SysShortcutsService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service\SysUserRolePowerService.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
@@ -347,6 +513,9 @@
     <Compile Include="Sys_Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys_Shortcuts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sys_User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -358,7 +527,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Adapter\Adapter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Adapter.cs</LastGenOutput>
+    </None>
     <None Include="App.config" />
+    <None Include="Controller\Controller.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Controller.cs</LastGenOutput>
+    </None>
+    <None Include="IAdapter\IAdapter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IAdapter.cs</LastGenOutput>
+    </None>
     <None Include="IRepositories\IRepository1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IRepository1.cs</LastGenOutput>
@@ -402,9 +583,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Adapter\" />
-    <Folder Include="Controller\" />
-    <Folder Include="IAdapter\" />
     <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

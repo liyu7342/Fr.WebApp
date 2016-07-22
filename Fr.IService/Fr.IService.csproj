@@ -61,6 +61,7 @@
     <Compile Include="System\ISysMenuService.cs" />
     <Compile Include="System\ISysPowerService.cs" />
     <Compile Include="System\ISysRoleService.cs" />
+    <Compile Include="System\ISysShortcutsService.cs" />
     <Compile Include="System\ISysUserRolePowerService.cs" />
     <Compile Include="System\ISysUserRoleService.cs" />
     <Compile Include="System\ISysUserService.cs" />

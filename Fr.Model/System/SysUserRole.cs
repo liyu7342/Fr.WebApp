@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 用户角色Id
     	/// </summary>
-    	[StringLength(50)]
+        [StringLength(50), Key]
     		
     	public string UserRoleId { get; set; }
     	/// <summary>

@@ -70,6 +70,7 @@
     <Compile Include="System\SysMenuRepository.cs" />
     <Compile Include="System\SysPowerRepository.cs" />
     <Compile Include="System\SysRoleRepository.cs" />
+    <Compile Include="System\SysShortcutsRepository.cs" />
     <Compile Include="System\SysUserRepository.cs" />
     <Compile Include="System\SysUserRolePowerRepository.cs" />
     <Compile Include="System\SysUserRoleRepository.cs" />

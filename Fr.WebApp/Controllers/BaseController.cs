@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fr.Utilily;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,15 @@ namespace Fr.WebApp.Controllers
                 
             }
             base.Initialize(requestContext);
+        }
+
+
+        public CurrentSysUser CurrentUser
+        {
+            get
+            {
+                return SysUserHelper.CurrentUser;
+            }
         }
     }
 }

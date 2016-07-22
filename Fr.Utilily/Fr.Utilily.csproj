@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClient.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="EncryptUtils.cs" />
     <Compile Include="Extends\CurrentSysUser.cs" />
     <Compile Include="Extends\Common.cs" />

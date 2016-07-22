@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 代理Id
     	/// </summary>
-    	[StringLength(50)]
+    	[StringLength(50),Key]
     		
     	public string AgentId { get; set; }
     	/// <summary>

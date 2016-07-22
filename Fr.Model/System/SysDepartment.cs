@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 部门Id
     	/// </summary>
-    	[StringLength(50)]
+        [StringLength(50), Key]
     		
     	public string DepartmentId { get; set; }
     	/// <summary>

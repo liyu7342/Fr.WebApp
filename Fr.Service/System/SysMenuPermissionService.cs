@@ -14,6 +14,7 @@ namespace Fr.Service
     using Fr.Repositories;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     
     public partial class SysMenuPermissionService:ISysMenuPermissionService
     { 
@@ -25,7 +26,12 @@ namespace Fr.Service
     	/// <param name="repository"></param>
     	public SysMenuPermissionService(ISysMenuPermissionRepository repository){
     		_repository = repository;
-    	} 
+    	}
+
+        public List<Model.SysMenu> GetModuleList(string roleId)
+        {
+            return   _repository.Source.Where(c => c.RoleId == roleId && c.Status==Model.StateEnum.启用).Select(c => c.SysMenu).ToList();
+        }
     }
 	
 }

@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 功能Id
     	/// </summary>
-    	[StringLength(50)]
+        [StringLength(50), Key]
     		
     	public string PowerId { get; set; }
     	/// <summary>

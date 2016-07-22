@@ -9,11 +9,17 @@
 
 namespace Fr.IService
 {
+    using Fr.Model;
     using System;
     using System.Collections.Generic;
     
     public  interface ISysMenuPermissionService
     {
-    
+        /// <summary>
+        /// 获取菜单
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        List<SysMenu> GetModuleList(string roleId);
     }
 }

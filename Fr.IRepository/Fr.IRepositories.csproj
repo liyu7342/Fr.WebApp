@@ -61,6 +61,7 @@
     <Compile Include="System\ISysMenuRepository.cs" />
     <Compile Include="System\ISysPowerRepository.cs" />
     <Compile Include="System\ISysRoleRepository.cs" />
+    <Compile Include="System\ISysShortcutsRepository.cs" />
     <Compile Include="System\ISysUserRepository.cs" />
     <Compile Include="System\ISysUserRolePowerRepository.cs" />
     <Compile Include="System\ISysUserRoleRepository.cs" />

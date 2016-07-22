@@ -39,5 +39,6 @@ namespace Fr
         public virtual DbSet<Sys_MenuPermission> Sys_MenuPermission { get; set; }
         public virtual DbSet<Sys_Log> Sys_Log { get; set; }
         public virtual DbSet<Sys_LogDetail> Sys_LogDetail { get; set; }
+        public virtual DbSet<Sys_Shortcuts> Sys_Shortcuts { get; set; }
     }
 }

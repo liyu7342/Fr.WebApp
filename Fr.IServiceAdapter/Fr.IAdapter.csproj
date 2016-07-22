@@ -45,10 +45,17 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\ISysAgentAdapter.cs" />
+    <Compile Include="System\ISysButtonAdapter.cs" />
+    <Compile Include="System\ISysButtonPermissionAdapter.cs" />
     <Compile Include="System\ISysCompanyAdapter.cs" />
     <Compile Include="System\ISysDepartmentAdapter.cs" />
+    <Compile Include="System\ISysLogAdapter.cs" />
+    <Compile Include="System\ISysLogDetailAdapter.cs" />
+    <Compile Include="System\ISysMenuAdapter.cs" />
+    <Compile Include="System\ISysMenuPermissionAdapter.cs" />
     <Compile Include="System\ISysPowerAdapter.cs" />
     <Compile Include="System\ISysRoleAdapter.cs" />
+    <Compile Include="System\ISysShortcutsAdapter.cs" />
     <Compile Include="System\ISysUserRolePowerAdapter.cs" />
     <Compile Include="System\ISysUserRoleAdapter.cs" />
     <Compile Include="System\ISysUserAdapter.cs" />

@@ -27,36 +27,10 @@ namespace Fr.WebApp.Controllers
         {
             return View();
         }
-
-        [HttpPost,OperationLog("登录")]
-        public ActionResult Index(SysUserValidate user)
-        {
-            throw new NotImplementedException();
-            //if (!ModelState.IsValid) return View(user);
-
-            //user.Password = EncryptUtils.MD5Encrypt(user.Password);
-
-            //var user = _userService.Login(user.LoginName, user.Password);
-            //if (result ==1){
-            //      FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(user.LoginName, false, 1);
-            //      //加密票据
-            //      string ticString = FormsAuthentication.Encrypt(ticket);
-            //      //输出到客户端
-            //      Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, ticString));
-            //      if (string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
-            //          return RedirectToAction("Index", "Home");
-            //      else
-            //          return Redirect(HttpUtility.UrlDecode(Request.QueryString["ReturnUrl"]));
-            //} 
-            //else
-            //{
-            //    ModelState.AddModelError("", "用户名或密码错误！");
-            //    return View(user);
-            //}
-        }
-
+         
         public ActionResult CheckLogin(string account, string password, string token)
         {
+            
             string msg = "";
             try
             { 
@@ -67,8 +41,15 @@ namespace Fr.WebApp.Controllers
                 }
                 else if (result.Status == "启用")
                 {
-                    var userStr = JsonConvert.SerializeObject(result);
-                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(account, false, 6000);
+                    CurrentSysUser user = new CurrentSysUser
+                    {
+                        UserId = result.UserId,
+                        LoginName = result.LoginName,
+                        NickName = result.NickName,
+                       // RoleId = 
+                    };
+                    var userStr = JsonConvert.SerializeObject(user);
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(userStr, false, 6000);
                     //加密票据
                     string ticString = FormsAuthentication.Encrypt(ticket);
                     //输出到客户端

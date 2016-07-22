@@ -24,20 +24,21 @@ namespace Fr.Adapter
         {
             Mapper.CreateMap<SysUser, SysUserDto>() 
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeString()))
-                .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeString()));
+                .ForMember(c => c.ModifyTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeString()));
             Mapper.CreateMap<SysUserDto, SysUser>()
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeNull()))
                 .ForMember(c => c.ModifyTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeNull()));
 
             Mapper.CreateMap<SysRole, SysRoleDto>() 
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeString()))
-                .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeString()));
+                .ForMember(c => c.ModifyTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeString()));
 
             Mapper.CreateMap<SysRoleDto, SysRole>()
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeNull()))
                 .ForMember(c => c.ModifyTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeNull()));
 
-           
+            Mapper.CreateMap<SysMenu, SysMenuDto>();
+            Mapper.CreateMap<SysMenuDto, SysMenu>();
         }
 
         public static TResult ToModel<TResult>(this object entity)

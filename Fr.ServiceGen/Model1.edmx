@@ -187,6 +187,19 @@
           <Property Name="ModifyUserId" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifyUserName" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Sys_Shortcuts">
+          <Key>
+            <PropertyRef Name="ShortcutsId" />
+          </Key>
+          <Property Name="ShortcutsId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="ModifyUserName" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Sys_User">
           <Key>
             <PropertyRef Name="UserId" />
@@ -247,6 +260,7 @@
           <EntitySet Name="Sys_MenuPermission" EntityType="Self.Sys_MenuPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Power" EntityType="Self.Sys_Power" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Role" EntityType="Self.Sys_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Shortcuts" EntityType="Self.Sys_Shortcuts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_User" EntityType="Self.Sys_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_UserRole" EntityType="Self.Sys_UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_UserRole_Power" EntityType="Self.Sys_UserRole_Power" Schema="dbo" store:Type="Tables" />
@@ -632,6 +646,7 @@
           <EntitySet Name="Sys_MenuPermission" EntityType="Fr_dbModel.Sys_MenuPermission" />
           <EntitySet Name="Sys_Log" EntityType="Fr_dbModel.Sys_Log" />
           <EntitySet Name="Sys_LogDetail" EntityType="Fr_dbModel.Sys_LogDetail" />
+          <EntitySet Name="Sys_Shortcuts" EntityType="Fr_dbModel.Sys_Shortcuts" />
         </EntityContainer>
         <EntityType Name="Sys_Button">
           <Key>
@@ -740,6 +755,19 @@
           <Property Name="NewValue" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Name="OldValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sys_Shortcuts">
+          <Key>
+            <PropertyRef Name="ShortcutsId" />
+          </Key>
+          <Property Name="ShortcutsId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MenuId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -988,6 +1016,20 @@
                 <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
                 <ScalarProperty Name="SysLogId" ColumnName="SysLogId" />
                 <ScalarProperty Name="SysLogDetailId" ColumnName="SysLogDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Shortcuts">
+            <EntityTypeMapping TypeName="Fr_dbModel.Sys_Shortcuts">
+              <MappingFragment StoreEntitySet="Sys_Shortcuts">
+                <ScalarProperty Name="ModifyUserName" ColumnName="ModifyUserName" />
+                <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="ShortcutsId" ColumnName="ShortcutsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -5,12 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fr.IAdapter;
+using Fr.Dto.System;
+using Fr.Dto;
 
 namespace Fr.WebApp.Controllers
 {
 
     public class HomeController : BaseController
     {
+        ISysShortcutsAdapter _shortcutsAdapter { get; set; }
+        ISysMenuPermissionAdapter _sysMenuPermissionAdapter { get; set; }
+        public HomeController(ISysShortcutsAdapter sysShortcutsAdapter,ISysMenuPermissionAdapter sysMenuPermissionAdapter)
+        {
+            _shortcutsAdapter = sysShortcutsAdapter;
+            _sysMenuPermissionAdapter = sysMenuPermissionAdapter;
+        }
+        
         //
         // GET: /Home/
 
@@ -41,7 +52,8 @@ namespace Fr.WebApp.Controllers
             CookieHelper.WriteCookie("ModuleId", _ModuleId);
             if (!string.IsNullOrEmpty(ModuleName))
             {
-                Base_SysLogBll.Instance.WriteLog(ModuleId, OperationType.Visit, "1", ModuleName);
+                
+                //SysLogAdapter.WriteLog(ModuleId, OperationType.Visit, "1", ModuleName);
             }
             return Content(_ModuleId);
         }
@@ -55,7 +67,7 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult SetLeave(string ModuleId, string ModuleName)
         {
-            Base_SysLogBll.Instance.WriteLog(ModuleId, OperationType.Leave, "1", ModuleName);
+            //Base_SysLogBll.Instance.WriteLog(ModuleId, OperationType.Leave, "1", ModuleName);
             return Content(ModuleId);
         }
 
@@ -66,7 +78,7 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult StartIndex()
         {
-            ViewBag.Account = ManageProvider.Provider.Current().Account + "（" + ManageProvider.Provider.Current().UserName + "）";
+            ViewBag.Account = CurrentUser == null ? "" : CurrentUser.NickName; //ManageProvider.Provider.Current().Account + "（" + ManageProvider.Provider.Current().UserName + "）";
             return View();
         }
         /// <summary>
@@ -83,9 +95,10 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult LoadStartMenu()
         {
-            string ObjectId = ManageProvider.Provider.Current().ObjectId;
-            List<Base_Module> list = base_modulepermissionbll.GetModuleList(ObjectId).FindAll(t => t.Enabled == 1);
-            return Content(list.ToJson().Replace("&nbsp;", ""));
+            string roleId = CurrentUser.RoleId;
+            
+            var list = _sysMenuPermissionAdapter.GetModuleList(roleId);
+            return Content(list.Serialize());
         }
         #endregion
 
@@ -96,7 +109,7 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult AccordionIndex()
         {
-            ViewBag.Account = ManageProvider.Provider.Current().Account + "（" + ManageProvider.Provider.Current().UserName + "）";
+            ViewBag.Account =CurrentUser == null ? "" : CurrentUser.NickName ;
             return View();
         }
      
@@ -106,9 +119,8 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult LoadAccordionMenu()
         {
-            string ObjectId = ManageProvider.Provider.Current().ObjectId;
-            List<Base_Module> list = base_modulepermissionbll.GetModuleList(ObjectId).FindAll(t => t.Enabled == 1);
-            return Content(list.ToJson().Replace("&nbsp;", ""));
+             var list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleId); 
+            return Content(list.Serialize());
         }
         #endregion
 
@@ -119,7 +131,7 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult TreeIndex()
         {
-            ViewBag.Account = ManageProvider.Provider.Current().Account + "（" + ManageProvider.Provider.Current().UserName + "）";
+            ViewBag.Account = CurrentUser == null ? "" : CurrentUser.NickName;
             return View();
         }
         /// <summary>
@@ -136,29 +148,24 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult LoadTreeMenu(string ModuleId)
         {
-            string ObjectId = ManageProvider.Provider.Current().ObjectId;
-            List<Base_Module> list = base_modulepermissionbll.GetModuleList(ObjectId).FindAll(t => t.Enabled == 1);
+            var list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleId);
+             
             List<TreeJsonEntity> TreeList = new List<TreeJsonEntity>();
-            foreach (Base_Module item in list)
+            foreach (var item in list)
             {
                 TreeJsonEntity tree = new TreeJsonEntity();
-                bool hasChildren = false;
-                List<Base_Module> childnode = list.FindAll(t => t.ParentId == item.ModuleId);
-                if (childnode.Count > 0)
-                {
-                    hasChildren = true;
-                }
+                
                 if (item.Category == "页面")
                 {
                     tree.Attribute = "Location";
                     tree.AttributeValue = item.Location;
                 }
-                tree.id = item.ModuleId;
-                tree.text = item.FullName;
-                tree.value = item.ModuleId;
+                tree.id = item.MenuId;
+                tree.text = item.MenuName;
+                tree.value = item.MenuId;
                 tree.isexpand = false;
                 tree.complete = true;
-                tree.hasChildren = hasChildren;
+                tree.hasChildren = list.Any(t => t.ParentId == item.MenuId);
                 tree.parentId = item.ParentId;
                 tree.img = item.Icon != null ? "/Content/Images/Icon16/" + item.Icon : item.Icon;
                 TreeList.Add(tree);
@@ -182,27 +189,26 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult ShortcutsModuleTreeJson()
         {
-            Base_ShortcutsBll base_shortcutsbll = new Base_ShortcutsBll();
-            string UserId = ManageProvider.Provider.Current().UserId;
-            List<Base_Module> ShortcutList = base_shortcutsbll.GetShortcutList(UserId);
-            string ObjectId = ManageProvider.Provider.Current().ObjectId;
-            List<Base_Module> list = base_modulepermissionbll.GetModuleList(ObjectId).FindAll(t => t.Enabled == 1);
+            string userId = CurrentUser.UserId;
+            List<SysMenuDto>  shortcutList = _shortcutsAdapter.GetShortcutList(userId);
+
+            List<SysMenuDto> list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleId);
             List<TreeJsonEntity> TreeList = new List<TreeJsonEntity>();
-            foreach (Base_Module item in list)
+            foreach (var item in list)
             {
                 TreeJsonEntity tree = new TreeJsonEntity();
-                tree.id = item.ModuleId;
-                tree.text = item.FullName;
-                tree.value = item.ModuleId;
+                tree.id = item.MenuId;
+                tree.text = item.MenuName;
+                tree.value = item.MenuId;
                 if (item.Category == "页面")
                 {
-                    tree.checkstate = ShortcutList.FindAll(t => t.ModuleId == item.ModuleId).Count == 0 ? 0 : 1;
+                    tree.checkstate = 0;//ShortcutList.FindAll(t => t.ModuleId == item.ModuleId).Count == 0 ? 0 : 1;
                     //tree.checkstate = item["objectid"].ToString() != "" ? 1 : 0;
                     tree.showcheck = true;
                 }
                 tree.isexpand = true;
                 tree.complete = true;
-                tree.hasChildren = list.FindAll(t => t.ParentId == item.ModuleId).Count > 0 ? true : false;
+                tree.hasChildren = list.Any(t => t.ParentId == item.MenuId);
                 tree.parentId = item.ParentId;
                 tree.img = item.Icon != null ? "/Content/Images/Icon16/" + item.Icon : item.Icon;
                 TreeList.Add(tree);
@@ -214,30 +220,23 @@ namespace Fr.WebApp.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult ShortcutsListJson()
-        {
-            Base_ShortcutsBll base_shortcutsbll = new Base_ShortcutsBll();
-            string UserId = ManageProvider.Provider.Current().UserId;
-            List<Base_Module> ShortcutList = base_shortcutsbll.GetShortcutList(UserId);
-            return Content(ShortcutList.ToJson());
+        { 
+            string UserId = CurrentUser.UserId;
+            List<SysMenuDto> ShortcutList = _shortcutsAdapter.GetShortcutList(UserId);
+            return Content(ShortcutList.Serialize());
         }
         /// <summary>
         /// 快捷方式设置 提交保存
         /// </summary>
         /// <param name="ModuleId"></param>
         /// <returns></returns>
-        public ActionResult SubmitShortcuts(string ModuleId)
-        {
-            try
-            {
-                Base_ShortcutsBll base_shortcutsbll = new Base_ShortcutsBll();
-                string UserId = ManageProvider.Provider.Current().UserId;
-                int IsOk = base_shortcutsbll.SubmitForm(ModuleId, UserId);
-                return Content(new JsonMessage { Success = true, Code = IsOk.ToString(), Message = "设置成功。" }.ToString());
-            }
-            catch (Exception ex)
-            {
-                return Content(new JsonMessage { Success = false, Code = "-1", Message = "操作失败：" + ex.Message }.ToString());
-            }
+        [JsonException]
+        public ActionResult SubmitShortcuts(string menuId)
+        { 
+            string UserId = CurrentUser.UserId;
+             _shortcutsAdapter.SaveShortcuts(menuId, UserId);
+            return Content(new  JsonResponse{ success = true, message = "设置成功。" }.ToString());
+            
         }
         #endregion
 

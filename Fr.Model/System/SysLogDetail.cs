@@ -21,7 +21,7 @@ namespace Fr.Model
     	/// <summary>
     	/// 
     	/// </summary>
-    	[StringLength(50)]
+        [StringLength(50), Key]
     		
     	public string SysLogDetailId { get; set; }
     	/// <summary>

@@ -24,38 +24,13 @@ namespace Fr.Utilily
         /// </summary>
         public string NickName { get; set; }
 
-        /// <summary>
-        /// 密码
-        /// </summary>
-        public string Password { get; set; }
-        /// <summary>
-        /// 手机号
-        /// </summary>
-        public string Mobile { get; set; }
-        /// <summary>
-        /// 电话
-        /// </summary>
-        public string Tel { get; set; }
-        /// <summary>
-        /// 邮箱
-        /// </summary>
-        public string Email { get; set; }
 
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public string CreateTime { get; set; }
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        public string CreateUser { get; set; }
-        /// <summary>
-        /// 修改时间
-        /// </summary>
-        public string ModifyTime { get; set; }
-        /// <summary>
-        /// 修改人
-        /// </summary>
-        public string ModifyUser { get; set; }
+        public string RoleId { get; set; }
+
+
+        public string CompanyId { get; set; }
+
+        public string DeptId { get; set; }
+         
     }
 }

@@ -33,8 +33,8 @@ namespace Fr.WebApp.Areas.System.Controllers
             int total = 0;
             var list = _service.GetUserList(param.Page, param.Rows, out total);
             var result = new JsonResponse<List<SysUserDto>>(){
-                Data = list,
-                Success=true
+                data = list,
+                success=true
             };
             return  Json(result,JsonRequestBehavior.AllowGet);
         }

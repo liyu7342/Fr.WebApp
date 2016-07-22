@@ -45,13 +45,20 @@
   <ItemGroup>
     <Compile Include="MapperConfig.cs" />
     <Compile Include="System\SysAgentAdapter.cs" />
+    <Compile Include="System\SysButtonAdapter.cs" />
+    <Compile Include="System\SysButtonPermissionAdapter.cs" />
     <Compile Include="System\SysCompanyAdapter.cs" />
     <Compile Include="System\SysDepartmentAdapter.cs" />
+    <Compile Include="System\SysLogAdapter.cs" />
+    <Compile Include="System\SysLogDetailAdapter.cs" />
+    <Compile Include="System\SysMenuAdapter.cs" />
+    <Compile Include="System\SysMenuPermissionAdapter.cs" />
     <Compile Include="System\SysPowerAdapter.cs" />
     <Compile Include="System\SysRoleAdapter.cs" />
+    <Compile Include="System\SysShortcutsAdapter.cs" />
     <Compile Include="System\SysUserRolePowerAdapter.cs" />
-    <Compile Include="System\SysUserRoleService.cs" />
-    <Compile Include="System\SysUserService.cs" />
+    <Compile Include="System\SysUserRoleAdapter.cs" />
+    <Compile Include="System\SysUserAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
