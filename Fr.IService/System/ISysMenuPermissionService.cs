@@ -20,6 +20,6 @@ namespace Fr.IService
         /// </summary>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        List<SysMenu> GetModuleList(string roleId);
+        List<SysMenu> GetModuleList( List<string> roleId);
     }
 }

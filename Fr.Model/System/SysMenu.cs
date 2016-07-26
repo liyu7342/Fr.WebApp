@@ -81,7 +81,7 @@ namespace Fr.Model
     	/// 
     	/// </summary>
     		
-    	public short? Status { get; set; }
+    	public StateEnum Status { get; set; }
     	/// <summary>
     	/// 
     	/// </summary>

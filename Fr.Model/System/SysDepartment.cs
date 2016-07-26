@@ -46,7 +46,7 @@ namespace Fr.Model
     	/// 状态
     	/// </summary>
     		
-    	public byte Status { get; set; }
+    	public StateEnum Status { get; set; }
     	/// <summary>
     	/// 创建时间
     	/// </summary>

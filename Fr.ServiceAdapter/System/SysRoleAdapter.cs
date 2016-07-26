@@ -9,6 +9,7 @@
 
 namespace Fr.Adapter
 {
+    using Fr.Dto.System;
     using Fr.IAdapter;
     using Fr.IService;
     using Fr.Service;
@@ -17,7 +18,15 @@ namespace Fr.Adapter
 
     public partial class SysRoleAdapter : ISysRoleAdapter
     {
-     
+        ISysRoleService _service;
+        public SysRoleAdapter(ISysRoleService service)
+        {
+            _service = service;
+        }
+        public SysRoleDto GetSysRole(string userId)
+        {
+            return _service.GetSysRole(userId).ToModel<SysRoleDto>();   
+        }
     }
 	
 }

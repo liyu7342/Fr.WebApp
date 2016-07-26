@@ -17,9 +17,11 @@ namespace Fr.WebApp.Controllers
     public class LoginController : Controller
     {
         ISysUserAdapter _userService;
-        public LoginController(ISysUserAdapter userService)
+        ISysUserRoleAdapter _roleService;
+        public LoginController(ISysUserAdapter userService,ISysUserRoleAdapter roleService)
         {
             _userService = userService;
+            _roleService = roleService;
         }
         
  
@@ -46,10 +48,11 @@ namespace Fr.WebApp.Controllers
                         UserId = result.UserId,
                         LoginName = result.LoginName,
                         NickName = result.NickName,
+                        RoleIds = _roleService.Get(result.UserId).Select(c=>c.RoleId).ToList()
                        // RoleId = 
                     };
                     var userStr = JsonConvert.SerializeObject(user);
-                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(userStr, false, 6000);
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,user.LoginName,DateTime.Now,DateTime.Now.AddHours(1),false,userStr);
                     //加密票据
                     string ticString = FormsAuthentication.Encrypt(ticket);
                     //输出到客户端

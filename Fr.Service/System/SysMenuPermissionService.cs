@@ -28,9 +28,9 @@ namespace Fr.Service
     		_repository = repository;
     	}
 
-        public List<Model.SysMenu> GetModuleList(string roleId)
+        public List<Model.SysMenu> GetModuleList(List<string> roleIds)
         {
-            return   _repository.Source.Where(c => c.RoleId == roleId && c.Status==Model.StateEnum.启用).Select(c => c.SysMenu).ToList();
+            return   _repository.Source.Where(c => roleIds.Contains( c.RoleId) && c.Status==Model.StateEnum.启用).Select(c => c.SysMenu).Distinct().ToList();
         }
     }
 	

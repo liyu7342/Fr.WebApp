@@ -46,9 +46,9 @@
     <Compile Include="System\SysMenuDto.cs" />
     <Compile Include="System\SysRoleDto.cs" />
     <Compile Include="System\SysUserDto.cs" />
+    <Compile Include="System\SysUserRoleDto.cs" />
     <Compile Include="Vaildate\SysUserVaildate.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

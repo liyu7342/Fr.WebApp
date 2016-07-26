@@ -16,6 +16,6 @@ namespace Fr.IAdapter
     public  interface ISysMenuPermissionAdapter
     {
 
-        List<SysMenuDto> GetModuleList(string roleId);
+        List<SysMenuDto> GetModuleList(List<string> roleIds);
     }
 }

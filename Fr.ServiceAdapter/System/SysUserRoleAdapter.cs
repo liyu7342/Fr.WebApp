@@ -9,15 +9,25 @@
 
 namespace Fr.Adapter
 {
+    using Fr.Dto.System;
     using Fr.IAdapter;
     using Fr.IService;
+    using Fr.Model;
     using Fr.Service;
     using System;
     using System.Collections.Generic;
 
     public partial class SysUserRoleAdapter : ISysUserRoleAdapter
     {
-     
+        ISysUserRoleService _service;
+        public SysUserRoleAdapter(ISysUserRoleService service)
+        {
+            _service = service;
+        }
+        public List<Dto.System.SysUserRoleDto> Get(string userId)
+        {
+            return _service.Get(userId).ToListModel<SysUserRoleDto, SysUserRole>();
+        }
     }
 	
 }

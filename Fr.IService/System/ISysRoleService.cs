@@ -9,11 +9,13 @@
 
 namespace Fr.IService
 {
+    using Fr.Model;
     using System;
     using System.Collections.Generic;
     
     public  interface ISysRoleService
     {
-    
+
+        SysRole GetSysRole(string userId);
     }
 }
