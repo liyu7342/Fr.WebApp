@@ -23,7 +23,7 @@ namespace Fr.Adapter
         {
             _service = service;
         }
-        public List<Dto.System.SysMenuDto> GetModuleList(string roleId)
+        public List<Dto.System.SysMenuDto> GetModuleList(List<string> roleId)
         {
             return _service.GetModuleList(roleId).ToListModel<SysMenuDto, SysMenu>();
         }

@@ -14,6 +14,8 @@ namespace Fr.Service
     using Fr.Repositories;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using Fr.Model;
     
     public partial class SysCompanyService:ISysCompanyService
     { 
@@ -25,7 +27,14 @@ namespace Fr.Service
     	/// <param name="repository"></param>
     	public SysCompanyService(ISysCompanyRepository repository){
     		_repository = repository;
-    	} 
+    	}
+
+
+        public List<SysCompany> GetCompanyList()
+        {
+            var source = _repository.Source.Where(c => c.Status != StateEnum.启用).OrderBy(c => c.CompanyName).ToList();
+            return source;
+        } 
     }
 	
 }

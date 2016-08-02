@@ -1191,11 +1191,11 @@ function SetDeriveExcel(obj, fileName) {
 表格视图列名
 */
 function columnModelData(jgrid) {
-    AjaxJson("/Utility/LoadViewColumn", {}, function (data) {
-        $.each(data, function (i) {
-            $(jgrid).hideCol(data[i].FieldName);
-        });
-    });
+    //AjaxJson("/Utility/LoadViewColumn", {}, function (data) {
+    //    $.each(data, function (i) {
+    //        $(jgrid).hideCol(data[i].FieldName);
+    //    });
+    //});
 }
 //加载权限按钮
 function PartialButton() {

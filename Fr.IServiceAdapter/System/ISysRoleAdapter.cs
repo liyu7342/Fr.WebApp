@@ -9,11 +9,18 @@
 
 namespace Fr.IAdapter
 {
+    using Fr.Dto.System;
     using System;
     using System.Collections.Generic;
 
     public interface ISysRoleAdapter
     {
-    
+        /// <summary>
+        /// 获取用户角色
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+
+        SysRoleDto GetSysRole(string userId);
     }
 }

@@ -14,6 +14,8 @@ namespace Fr.Service
     using Fr.Repositories;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using Fr.Model;
     
     public partial class SysUserRoleService:ISysUserRoleService
     { 
@@ -26,6 +28,13 @@ namespace Fr.Service
     	public SysUserRoleService(ISysUserRoleRepository repository){
     		_repository = repository;
     	} 
+
+
+            
+        public List<SysUserRole> Get(string userId)
+        {
+            return _repository.Source.Where(c => c.UserId == userId).ToList();
+        }
     }
 	
 }

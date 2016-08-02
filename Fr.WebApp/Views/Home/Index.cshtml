@@ -139,12 +139,12 @@
             getAjax("/Home/LoadAccordionMenu", "", function (data) {
                 accordionJson = eval("(" + data + ")");
                 $.each(accordionJson, function (i) {
-                    if (accordionJson[i].ParentId == '9f8ce93a-fc2d-4914-a59c-a6b49494108f') {
-                        html += "<li title=" + accordionJson[i].FullName + ">";
+                    if (accordionJson[i].ParentId==null) {
+                        html += "<li title=" + accordionJson[i].MenuName + ">";
                         html += "<div class=\"link\"><img src='../Content/Images/Icon16/" + accordionJson[i].Icon + "'>";
-                        html += "<span>" + accordionJson[i].FullName + "</span><i class=\"chevron-down\"></i>";
+                        html += "<span>" + accordionJson[i].MenuName + "</span><i class=\"chevron-down\"></i>";
                         html += "</div>";
-                        html += GetSubmenu(accordionJson[i].ModuleId, "b-children");
+                        html += GetSubmenu(accordionJson[i].MenuId, "b-children");
                         html += "</li>";
                     }
                 });
@@ -152,16 +152,16 @@
             $("#accordion").append(html);
         }
         //导航子菜单
-        function GetSubmenu(ModuleId, _class) {
+        function GetSubmenu(MenuId, _class) {
             var submenu = "<ul class=\"submenu " + _class + "\">";
             $.each(accordionJson, function (i) {
-                if (accordionJson[i].ParentId == ModuleId) {
-                    if (IsBelowMenu(accordionJson[i].ModuleId) > 0) {
-                        submenu += "<li title=" + accordionJson[i].FullName + "><a class=\"link\"><img src='../Content/Images/Icon16/" + accordionJson[i].Icon + "'><span>" + accordionJson[i].FullName + "</span><i class=\"submenu-chevron-down\"></i></a>";
-                        submenu += GetSubmenu(accordionJson[i].ModuleId, "c-children")
+                if (accordionJson[i].ParentId == MenuId) {
+                    if (IsBelowMenu(accordionJson[i].MenuId) > 0) {
+                        submenu += "<li title=" + accordionJson[i].MenuName + "><a class=\"link\"><img src='../Content/Images/Icon16/" + accordionJson[i].Icon + "'><span>" + accordionJson[i].MenuName + "</span><i class=\"submenu-chevron-down\"></i></a>";
+                        submenu += GetSubmenu(accordionJson[i].MenuId, "c-children")
                         submenu += "</li>";
                     } else {
-                        submenu += "<li title=" + accordionJson[i].FullName + " onclick=\"AddTabMenu('" + accordionJson[i].ModuleId + "', '" + RootPath() + accordionJson[i].Location + "', '" + accordionJson[i].FullName + "',  '" + accordionJson[i].Icon + "','true');linkAddTabMenu()\"><img src='../Content/Images/Icon16/" + accordionJson[i].Icon + "'><a><span>" + accordionJson[i].FullName + "</span></a></li>";
+                        submenu += "<li title=" + accordionJson[i].MenuName + " onclick=\"AddTabMenu('" + accordionJson[i].MenuId + "', '" + RootPath() + accordionJson[i].Location + "', '" + accordionJson[i].MenuName + "',  '" + accordionJson[i].Icon + "','true');linkAddTabMenu()\"><img src='../Content/Images/Icon16/" + accordionJson[i].Icon + "'><a><span>" + accordionJson[i].MenuName + "</span></a></li>";
                     }
                 }
             });
@@ -169,10 +169,10 @@
             return submenu;
         }
         //判断是否有子节点
-        function IsBelowMenu(ModuleId) {
+        function IsBelowMenu(MenuId) {
             var count = 0;
             $.each(accordionJson, function (i) {
-                if (accordionJson[i].ParentId == ModuleId) {
+                if (accordionJson[i].ParentId == MenuId) {
                     count++;
                     return false;
                 }
@@ -263,7 +263,7 @@
                     <ul id="tabs_container" class="tab-nav">
                     </ul>
                 </div>
-                <input id="ModuleId" type="hidden" />
+                <input id="MenuId" type="hidden" />
             </div>
             <div class="rightMenu">
                 <ul>

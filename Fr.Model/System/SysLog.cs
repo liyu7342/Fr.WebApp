@@ -93,7 +93,7 @@ namespace Fr.Model
     	/// 
     	/// </summary>
     		
-    	public int? Status { get; set; }
+    	public StateEnum Status { get; set; }
     }
     
     internal class SysLogConfig : EntityTypeConfiguration<SysLog>

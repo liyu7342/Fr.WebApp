@@ -1,4 +1,4 @@
-﻿using Fr.Security;
+﻿  using Fr.Security;
 using Fr.Utilily;
 using System;
 using System.Collections.Generic;
@@ -95,9 +95,9 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult LoadStartMenu()
         {
-            string roleId = CurrentUser.RoleId;
-            
-            var list = _sysMenuPermissionAdapter.GetModuleList(roleId);
+
+
+            var list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleIds);
             return Content(list.Serialize());
         }
         #endregion
@@ -119,7 +119,7 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult LoadAccordionMenu()
         {
-             var list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleId); 
+             var list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleIds); 
             return Content(list.Serialize());
         }
         #endregion
@@ -148,7 +148,7 @@ namespace Fr.WebApp.Controllers
         /// <returns></returns>
         public ActionResult LoadTreeMenu(string ModuleId)
         {
-            var list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleId);
+            var list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleIds);
              
             List<TreeJsonEntity> TreeList = new List<TreeJsonEntity>();
             foreach (var item in list)
@@ -192,7 +192,7 @@ namespace Fr.WebApp.Controllers
             string userId = CurrentUser.UserId;
             List<SysMenuDto>  shortcutList = _shortcutsAdapter.GetShortcutList(userId);
 
-            List<SysMenuDto> list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleId);
+            List<SysMenuDto> list = _sysMenuPermissionAdapter.GetModuleList(CurrentUser.RoleIds);
             List<TreeJsonEntity> TreeList = new List<TreeJsonEntity>();
             foreach (var item in list)
             {

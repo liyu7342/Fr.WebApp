@@ -36,6 +36,8 @@ namespace Fr.Adapter
             Mapper.CreateMap<SysRoleDto, SysRole>()
                 .ForMember(c => c.CreateTime, c => c.MapFrom(src => src.CreateTime.ToDateTimeNull()))
                 .ForMember(c => c.ModifyTime, c => c.MapFrom(src => src.ModifyTime.ToDateTimeNull()));
+            Mapper.CreateMap<SysUserRole, SysUserRoleDto>();
+            Mapper.CreateMap<SysUserRoleDto, SysUserRole>();
 
             Mapper.CreateMap<SysMenu, SysMenuDto>();
             Mapper.CreateMap<SysMenuDto, SysMenu>();

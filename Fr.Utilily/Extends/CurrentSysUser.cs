@@ -25,7 +25,7 @@ namespace Fr.Utilily
         public string NickName { get; set; }
 
 
-        public string RoleId { get; set; }
+        public List<string> RoleIds { get; set; }
 
 
         public string CompanyId { get; set; }

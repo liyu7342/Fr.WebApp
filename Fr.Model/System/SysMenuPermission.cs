@@ -44,7 +44,6 @@ namespace Fr.Model
     	/// <summary>
     	/// 
     	/// </summary>
-    	[StringLength(50)]
 
         public StateEnum Status { get; set; }
     	/// <summary>
