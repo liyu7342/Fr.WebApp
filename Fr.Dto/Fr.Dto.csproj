@@ -43,6 +43,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="JqGrid\jqGridParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\SysCompanyDto.cs" />
     <Compile Include="System\SysMenuDto.cs" />
     <Compile Include="System\SysRoleDto.cs" />
     <Compile Include="System\SysUserDto.cs" />

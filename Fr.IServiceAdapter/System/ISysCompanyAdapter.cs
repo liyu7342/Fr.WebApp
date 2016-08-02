@@ -9,11 +9,13 @@
 
 namespace Fr.IAdapter
 {
+    using Fr.Dto.System;
     using System;
     using System.Collections.Generic;
 
     public interface ISysCompanyAdapter
     {
+        List<SysCompanyDto> GetCompanyList();
     
     }
 }

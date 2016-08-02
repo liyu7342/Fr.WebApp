@@ -27,7 +27,7 @@ namespace Fr.WebApp.Areas.System.Controllers
             return View();
         }
 
-
+        [JsonException]
         public JsonResult GetUserList( jqGridParam param)
         {
             int total = 0;

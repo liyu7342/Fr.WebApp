@@ -9,15 +9,26 @@
 
 namespace Fr.Adapter
 {
+    using Fr.Dto.System;
     using Fr.IAdapter;
     using Fr.IService;
+    using Fr.Model;
     using Fr.Service;
     using System;
     using System.Collections.Generic;
 
     public partial class SysCompanyAdapter : ISysCompanyAdapter
     {
-     
+        ISysCompanyService _service;
+
+        public SysCompanyAdapter(ISysCompanyService service)
+        {
+            _service = service;
+        }
+        public List<SysCompanyDto> GetCompanyList()
+        {
+            return _service.GetCompanyList().ToListModel<SysCompanyDto, SysCompany>();
+        }
     }
 	
 }

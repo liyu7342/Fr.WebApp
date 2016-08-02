@@ -35,7 +35,7 @@ namespace Fr.Model
     	/// </summary>
     	[StringLength(50)]
     		
-    	public string parentId { get; set; }
+    	public string ParentId { get; set; }
     	/// <summary>
     	/// 状态
     	/// </summary>

@@ -73,7 +73,7 @@ namespace Fr.Service
 
         public List<SysUser> GetUserList(int index, int size, out int total)
         {
-            var source = _repository.Source.OrderBy(c => c.LoginName);
+            var source = _repository.Source.Where(c=>c.Status !=UserStateEnum.删除).OrderBy(c => c.LoginName);
             return _repository.FindForPaging(size, index, source, out total).ToList();
         }
 
