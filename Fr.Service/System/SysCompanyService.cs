@@ -16,6 +16,7 @@ namespace Fr.Service
     using System.Collections.Generic;
     using System.Linq;
     using Fr.Model;
+    using Fr.Utilily;
     
     public partial class SysCompanyService:ISysCompanyService
     { 
@@ -34,7 +35,41 @@ namespace Fr.Service
         {
             var source = _repository.Source.Where(c => c.Status != StateEnum.启用).OrderBy(c => c.CompanyName).ToList();
             return source;
-        } 
+        }
+
+
+        public SysCompany GetCompanyInfo(string keyId)
+        {
+            var entity = _repository.Find(c => c.CompanyId == keyId && c.Status == StateEnum.启用).FirstOrDefault();
+            return entity;
+        }
+
+        public bool SaveCompanyInfo(string keyId,SysCompany data)
+        {
+            if(data ==null || string.IsNullOrEmpty(data.CompanyId ))
+                throw new ArgumentNullException("参数错误");
+            var user = SysUserHelper.CurrentUser;
+            if (string.IsNullOrEmpty(keyId))
+            {
+                data.CreateTime = DateTime.Now;
+                data.CreateUserId = user.UserId;
+                data.CreateUserName = user.NickName;
+                data.ModifyTime = DateTime.Now;
+                data.ModifyUserId = user.UserId;
+                _repository.Insert(data);
+            }
+            else
+            {
+                data.CompanyId = keyId;
+                data.ModifyUserId = user.UserId;
+                data.ModifyUserName = user.NickName;
+                data.ModifyTime = DateTime.Now;
+                _repository.Save(data);
+            }
+            return true;
+        }
+
+                
     }
 	
 }

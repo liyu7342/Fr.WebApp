@@ -4,66 +4,19 @@
 }
 <script type="text/javascript">
     $(function () {
-        BindCombobox();
         InitControl();
     })
-    //初始化绑定下拉框
-    function BindCombobox() {
-        //公司分类
-        BindDropItem("#Category", "CompanyCategory", "==请选择=");
-        //公司性质
-        BindDropItem("#Nature", "CompanyNature", "==请选择=");
-        //所在省
-        $("#ProvinceId").append("<option value=''>==请选择==</option>");
-        $("#CityId").append("<option value=''>==请选择==</option>");
-        $("#CountyId").append("<option value=''>==请选择==</option>");
-        AjaxJson("/Utility/GetProvinceCityListJson", { ParentId: 0 }, function (DataJson) {
-            $.each(DataJson, function (i) {
-                $("#ProvinceId").append($("<option></option>").val(DataJson[i].Code).html(DataJson[i].FullName));
-            });
-        })
-        //所在市
-        $("#ProvinceId").change(function () {
-            BindCityId();
-        });
-        //所在县区
-        $("#CityId").change(function () {
-            BindCountyId();
-        });
-    }
-    //所在市下拉框
-    function BindCityId() {
-        $("#CityId").html("");
-        $("#CityId").append("<option value=''>==请选择==</option>");
-        AjaxJson("/Utility/GetProvinceCityListJson", { ParentId: $("#ProvinceId").val() }, function (DataJson) {
-            $.each(DataJson, function (i) {
-                $("#CityId").append($("<option></option>").val(DataJson[i].Code).html(DataJson[i].FullName));
-            });
-        })
-    }
-    //所在县区
-    function BindCountyId() {
-        $("#CountyId").html("");
-        $("#CountyId").append("<option value=''>==请选择==</option>");
-        AjaxJson("/Utility/GetProvinceCityListJson", { ParentId: $("#CityId").val() }, function (DataJson) {
-            $.each(DataJson, function (i) {
-                $("#CountyId").append($("<option></option>").val(DataJson[i].Code).html(DataJson[i].FullName));
-            });
-        })
-    }
+
+
     //得到一个对象实体
     function InitControl() {
-        if (!!GetQuery('KeyValue')) {
-            AjaxJson("/CommonModule/Company/SetCompanyForm", { KeyValue: GetQuery('KeyValue') }, function (data) {
-                SetWebControls(data);
-                BindCityId();
-                $("#CityId").val(data.CityId);
-                BindCountyId();
-                $("#CountyId").val(data.CountyId);
+        if (!!GetQuery('keyId')) {
+            AjaxJson("/System/Company/GetCompanyInfo", { keyId: GetQuery('keyId') }, function (data) {
+                SetWebControls(data); 
             });
         } else {
             //显示顺序
-            AjaxJson("/CommonModule/Company/SortCode", {}, function (Data) {
+            AjaxJson("/System/Company/SortCode", {}, function (Data) {
                 $("#SortCode").val(Data);
             })
             if (!!GetQuery('CompanyId')) {
@@ -80,9 +33,10 @@
         }
         Loading(true, "正在提交数据...");
         window.setTimeout(function () {
-            var postData = GetWebControls("#form1");
-            postData["BuildFormJson"] = JSON.stringify(GetWebControls("#CustomAttribute"));
-            AjaxJson("/CommonModule/Company/SubmitCompanyForm?KeyValue=" + GetQuery('KeyValue'), postData, function (data) {
+            var postData = $("#form1").serializeObject();
+            //postData["BuildFormJson"] = JSON.stringify(GetWebControls("#CustomAttribute"));
+            
+            AjaxJson("/System/Company/SubmitCompany?keyId=" + GetQuery('keyId'), postData, function (data) {
                 tipDialog(data.Message, 3, data.Code);
                 top.frames[tabiframeId()].windowload();
                 closeDialog();
@@ -110,13 +64,13 @@
                     </th>
                     <td class="formValue">
                         <input id="ParentId" type="hidden" />
-                        <input id="Code" type="text" class="txt required" datacol="yes" err="公司编码" checkexpession="NotNull" />
+                        <input id="Code" type="text" class="txt required" datacol="yes" placeholder="公司编码" err="公司编码" checkexpession="NotNull" />
                     </td>
                     <th class="formTitle">
                         公司名称：
                     </th>
                     <td class="formValue">
-                        <input id="FullName" type="text" class="txt required" datacol="yes" err="公司名称" checkexpession="NotNull" />
+                        <input id="FullName" type="text" class="txt required" datacol="yes" placeholder="公司名称" err="公司名称" checkexpession="NotNull" />
                     </td>
                 </tr>
                 <tr>
@@ -124,13 +78,14 @@
                         公司简称：
                     </th>
                     <td class="formValue">
-                        <input id="ShortName" type="text" class="txt" />
+                        <input id="ShortName" type="text" class="txt" placeholder="公司简称" />
                     </td>
                     <th class="formTitle">
                         公司分类：
                     </th>
                     <td class="formValue">
-                        <select id="Category" class="txtselect required" datacol="yes" err="公司分类" checkexpession="NotNull"></select>
+                        <input id="Category" type="text" class="txt" placeholder="公司分类" err="公司分类" />
+                        @*<select id="Category" class="txtselect required" datacol="yes" err="公司分类" checkexpession="NotNull"></select>*@
                     </td>
                 </tr>
                 <tr>
@@ -138,7 +93,7 @@
                         公司性质：
                     </th>
                     <td class="formValue">
-                        <select id="Nature" class="txtselect" datacol="yes" err="公司性质" checkexpession="NotNull"></select>
+                        <input id="Nature" type="text" class="txt" placeholder="公司性质" err="公司性质" />
                     </td>
                     <th class="formTitle">公司法人：</th>
                     <td class="formValue">
@@ -163,26 +118,6 @@
                     <th class="formTitle">传真：</th>
                     <td class="formValue">
                         <input id="Fax" type="text" class="txt" />
-                    </td>
-                </tr>
-                <tr>
-                    <th class="formTitle">所在省：</th>
-                    <td class="formValue">
-                        <select id="ProvinceId" class="txtselect"></select>
-                    </td>
-                    <th class="formTitle">所在市：</th>
-                    <td class="formValue">
-                        <select id="CityId" class="txtselect"></select>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="formTitle">所在县区：</th>
-                    <td class="formValue">
-                        <select id="CountyId" class="txtselect"></select>
-                    </td>
-                    <th class="formTitle">邮编编码：</th>
-                    <td class="formValue">
-                        <input id="Postalcode" type="text" class="txt" />
                     </td>
                 </tr>
                 <tr>

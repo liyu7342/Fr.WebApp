@@ -29,6 +29,17 @@ namespace Fr.Adapter
         {
             return _service.GetCompanyList().ToListModel<SysCompanyDto, SysCompany>();
         }
+
+
+        public SysCompanyDto GetCompanyInfo(string keyId)
+        {
+            return _service.GetCompanyInfo(keyId).ToModel<SysCompanyDto>();
+        }
+
+        public bool SaveCompanyInfo(string keyId,SysCompanyDto data)
+        {
+            return _service.SaveCompanyInfo(keyId,data.ToModel<SysCompany>()); 
+        }
     }
 	
 }

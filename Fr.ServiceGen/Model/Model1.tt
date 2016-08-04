@@ -77,15 +77,13 @@ using System.Data.Entity.ModelConfiguration;
 	/// <summary>
 	/// <#=SummaryComment(edmProperty)#>
 	/// </summary>
-	<#
-	if(typeMapper.GetTypeName(edmProperty.TypeUsage)=="string")
+	<#if(typeMapper.GetTypeName(edmProperty.TypeUsage)=="string")
 	{
 	#>
-[StringLength(<#=edmProperty.MaxLength#>)]
+	[StringLength(<#=edmProperty.MaxLength#>)]
 	<#
 		}
 	#>
-	<#=#>
 	<#=codeStringGenerator.Property(edmProperty)#>
 <#
         }

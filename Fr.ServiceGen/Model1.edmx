@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Fr_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Fr_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Sys_Agent">
           <Key>
             <PropertyRef Name="AgentId" />
@@ -46,7 +46,7 @@
             <PropertyRef Name="ButtonPermissionId" />
           </Key>
           <Property Name="ButtonPermissionId" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserRoleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="50" />
           <Property Name="MenuId" Type="nvarchar" MaxLength="50" />
           <Property Name="ButtonId" Type="nvarchar" MaxLength="50" />
           <Property Name="SortCode" Type="int" />
@@ -64,7 +64,18 @@
           </Key>
           <Property Name="CompanyId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CompanyName" Type="nvarchar" MaxLength="200" />
-          <Property Name="parentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nature" Type="nvarchar" MaxLength="50" />
+          <Property Name="Manager" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="200" />
+          <Property Name="AccountInfo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="200" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="2000" />
+          <Property Name="SortOrder" Type="int" />
           <Property Name="Status" Type="smallint" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="CreateUserId" Type="nvarchar" MaxLength="50" />
@@ -88,6 +99,27 @@
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="ModifyUserId" Type="varchar" MaxLength="50" />
           <Property Name="ModifyUserName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Sys_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyId" Type="varchar" MaxLength="50" />
+          <Property Name="DepartmentId" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
+          <Property Name="IdCard" Type="varchar" MaxLength="50" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="CreateUserName" Type="varchar" MaxLength="200" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="ModifyUserId" Type="varchar" MaxLength="50" />
+          <Property Name="ModifyUserNaame" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Sys_Log">
           <Key>
@@ -133,7 +165,7 @@
           <Property Name="Level" Type="int" />
           <Property Name="SortCode" Type="int" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
-          <Property Name="Status" Type="smallint" />
+          <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="CreateUserId" Type="nvarchar" MaxLength="50" />
           <Property Name="CreateUserName" Type="nvarchar" MaxLength="200" />
@@ -147,9 +179,9 @@
           </Key>
           <Property Name="MenuPermissionId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MenuId" Type="nvarchar" MaxLength="50" />
-          <Property Name="UserRoleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="50" />
           <Property Name="SortCode" Type="int" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="CreateUserId" Type="nvarchar" MaxLength="50" />
@@ -171,6 +203,12 @@
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="ModifyUserId" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifyUserName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateTime2" Type="datetime" />
+          <Property Name="CreateUserId2" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateUserName2" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifyTime2" Type="datetime" />
+          <Property Name="ModifyUserId2" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifyUserName2" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Sys_Role">
           <Key>
@@ -193,12 +231,13 @@
           </Key>
           <Property Name="ShortcutsId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="MenuId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="CreateUserId" Type="varchar" MaxLength="50" />
-          <Property Name="CreateUserName" Type="varchar" MaxLength="50" />
+          <Property Name="CreateUserName" Type="varchar" MaxLength="200" />
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="ModifyUserId" Type="varchar" MaxLength="50" />
-          <Property Name="ModifyUserName" Type="varchar" MaxLength="50" />
+          <Property Name="ModifyUserName" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Sys_User">
           <Key>
@@ -227,6 +266,7 @@
           <Property Name="UserRoleId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="nvarchar" MaxLength="50" />
           <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="CreateUserId" Type="nvarchar" MaxLength="50" />
           <Property Name="CreateUserName" Type="nvarchar" MaxLength="200" />
@@ -254,6 +294,7 @@
           <EntitySet Name="Sys_ButtonPermission" EntityType="Self.Sys_ButtonPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Company" EntityType="Self.Sys_Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Department" EntityType="Self.Sys_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Employee" EntityType="Self.Sys_Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Log" EntityType="Self.Sys_Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_LogDetail" EntityType="Self.Sys_LogDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Menu" EntityType="Self.Sys_Menu" Schema="dbo" store:Type="Tables" />
@@ -331,11 +372,6 @@
               <Summary>公司名称</Summary>
             </Documentation>
           </Property>
-          <Property Name="parentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true">
-            <Documentation>
-              <Summary>父公司Id</Summary>
-            </Documentation>
-          </Property>
           <Property Name="Status" Type="Byte" Nullable="false">
             <Documentation>
               <Summary>状态</Summary>
@@ -363,6 +399,18 @@
           </Property>
           <Property Name="CreateUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ModifyUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSite" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AccountInfo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
         </EntityType>
         <EntityType Name="Sys_Department">
           <Documentation>
@@ -447,6 +495,12 @@
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
           <Property Name="ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifyUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime2" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserName2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyTime2" Type="DateTime" Precision="3" />
+          <Property Name="ModifyUserId2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyUserName2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sys_Role">
           <Documentation>
@@ -601,6 +655,7 @@
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
           <Property Name="ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifyUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           </EntityType>
         <EntityType Name="Sys_UserRole_Power">
           <Documentation>
@@ -647,6 +702,7 @@
           <EntitySet Name="Sys_Log" EntityType="Fr_dbModel.Sys_Log" />
           <EntitySet Name="Sys_LogDetail" EntityType="Fr_dbModel.Sys_LogDetail" />
           <EntitySet Name="Sys_Shortcuts" EntityType="Fr_dbModel.Sys_Shortcuts" />
+          <EntitySet Name="Sys_Employee" EntityType="Fr_dbModel.Sys_Employee" />
         </EntityContainer>
         <EntityType Name="Sys_Button">
           <Key>
@@ -675,7 +731,6 @@
             <PropertyRef Name="ButtonPermissionId" />
           </Key>
           <Property Name="ButtonPermissionId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UserRoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MenuId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ButtonId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SortCode" Type="Int32" />
@@ -686,6 +741,7 @@
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
           <Property Name="ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifyUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sys_Menu">
           <Key>
@@ -701,7 +757,7 @@
           <Property Name="Level" Type="Int32" />
           <Property Name="SortCode" Type="Int32" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Int16" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreateUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -715,9 +771,8 @@
           </Key>
           <Property Name="MenuPermissionId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MenuId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UserRoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SortCode" Type="Int32" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -725,6 +780,7 @@
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
           <Property Name="ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModifyUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sys_Log">
           <Key>
@@ -764,10 +820,32 @@
           <Property Name="MenuId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreateUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
           <Property Name="ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sys_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdCard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyUserNaame" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -793,11 +871,22 @@
           <EntitySetMapping Name="Sys_Company">
             <EntityTypeMapping TypeName="Fr_dbModel.Sys_Company">
               <MappingFragment StoreEntitySet="Sys_Company">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="AccountInfo" ColumnName="AccountInfo" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="ModifyUserName" ColumnName="ModifyUserName" />
                 <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="parentId" ColumnName="parentId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
@@ -826,6 +915,12 @@
           <EntitySetMapping Name="Sys_Power">
             <EntityTypeMapping TypeName="Fr_dbModel.Sys_Power">
               <MappingFragment StoreEntitySet="Sys_Power">
+                <ScalarProperty Name="ModifyUserName2" ColumnName="ModifyUserName2" />
+                <ScalarProperty Name="ModifyUserId2" ColumnName="ModifyUserId2" />
+                <ScalarProperty Name="ModifyTime2" ColumnName="ModifyTime2" />
+                <ScalarProperty Name="CreateUserName2" ColumnName="CreateUserName2" />
+                <ScalarProperty Name="CreateUserId2" ColumnName="CreateUserId2" />
+                <ScalarProperty Name="CreateTime2" ColumnName="CreateTime2" />
                 <ScalarProperty Name="ModifyUserName" ColumnName="ModifyUserName" />
                 <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
                 <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
@@ -878,6 +973,7 @@
           <EntitySetMapping Name="Sys_UserRole">
             <EntityTypeMapping TypeName="Fr_dbModel.Sys_UserRole">
               <MappingFragment StoreEntitySet="Sys_UserRole">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ModifyUserName" ColumnName="ModifyUserName" />
                 <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
                 <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
@@ -931,6 +1027,7 @@
           <EntitySetMapping Name="Sys_ButtonPermission">
             <EntityTypeMapping TypeName="Fr_dbModel.Sys_ButtonPermission">
               <MappingFragment StoreEntitySet="Sys_ButtonPermission">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="ModifyUserName" ColumnName="ModifyUserName" />
                 <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
                 <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
@@ -941,7 +1038,6 @@
                 <ScalarProperty Name="SortCode" ColumnName="SortCode" />
                 <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
                 <ScalarProperty Name="ButtonPermissionId" ColumnName="ButtonPermissionId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -972,6 +1068,7 @@
           <EntitySetMapping Name="Sys_MenuPermission">
             <EntityTypeMapping TypeName="Fr_dbModel.Sys_MenuPermission">
               <MappingFragment StoreEntitySet="Sys_MenuPermission">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="ModifyUserName" ColumnName="ModifyUserName" />
                 <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
                 <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
@@ -981,7 +1078,6 @@
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="SortCode" ColumnName="SortCode" />
-                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="MenuPermissionId" ColumnName="MenuPermissionId" />
               </MappingFragment>
@@ -1022,6 +1118,7 @@
           <EntitySetMapping Name="Sys_Shortcuts">
             <EntityTypeMapping TypeName="Fr_dbModel.Sys_Shortcuts">
               <MappingFragment StoreEntitySet="Sys_Shortcuts">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ModifyUserName" ColumnName="ModifyUserName" />
                 <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
                 <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
@@ -1030,6 +1127,28 @@
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="ShortcutsId" ColumnName="ShortcutsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Employee">
+            <EntityTypeMapping TypeName="Fr_dbModel.Sys_Employee">
+              <MappingFragment StoreEntitySet="Sys_Employee">
+                <ScalarProperty Name="ModifyUserNaame" ColumnName="ModifyUserNaame" />
+                <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

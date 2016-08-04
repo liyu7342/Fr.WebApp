@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fr.Dto
 {
-    public class JsonResponse<T> where T : class
+    public class JsonResponse<T> 
     {
         public bool success { get; set; }
 

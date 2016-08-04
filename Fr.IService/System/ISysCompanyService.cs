@@ -16,5 +16,9 @@ namespace Fr.IService
     public  interface ISysCompanyService
     {
         List<SysCompany> GetCompanyList();
+
+        SysCompany GetCompanyInfo(string keyId);
+
+        bool SaveCompanyInfo(string keyId,SysCompany data);
     }
 }

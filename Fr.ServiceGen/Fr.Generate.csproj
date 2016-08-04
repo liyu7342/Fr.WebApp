@@ -79,6 +79,9 @@
     <Compile Include="Adapter\SysDepartmentAdapter.cs">
       <DependentUpon>Adapter.tt</DependentUpon>
     </Compile>
+    <Compile Include="Adapter\SysEmployeeAdapter.cs">
+      <DependentUpon>Adapter.tt</DependentUpon>
+    </Compile>
     <Compile Include="Adapter\SysLogAdapter.cs">
       <DependentUpon>Adapter.tt</DependentUpon>
     </Compile>
@@ -131,6 +134,9 @@
     <Compile Include="Controller\SysDepartmentController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controller\SysEmployeeController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controller\SysLogController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -179,6 +185,9 @@
       <DependentUpon>IAdapter.tt</DependentUpon>
     </Compile>
     <Compile Include="IAdapter\ISysDepartmentAdapter.cs">
+      <DependentUpon>IAdapter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAdapter\ISysEmployeeAdapter.cs">
       <DependentUpon>IAdapter.tt</DependentUpon>
     </Compile>
     <Compile Include="IAdapter\ISysLogAdapter.cs">
@@ -232,6 +241,9 @@
     <Compile Include="IRepositories\ISysDepartmentRepository.cs">
       <DependentUpon>IRepository1.tt</DependentUpon>
     </Compile>
+    <Compile Include="IRepositories\ISysEmployeeRepository.cs">
+      <DependentUpon>IRepository1.tt</DependentUpon>
+    </Compile>
     <Compile Include="IRepositories\ISysLogDetailRepository.cs">
       <DependentUpon>IRepository1.tt</DependentUpon>
     </Compile>
@@ -280,6 +292,9 @@
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
     <Compile Include="IService\ISysDepartmentService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\ISysEmployeeService.cs">
       <DependentUpon>IService.tt</DependentUpon>
     </Compile>
     <Compile Include="IService\ISysLogDetailService.cs">
@@ -348,6 +363,9 @@
     <Compile Include="Model\SysDepartment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SysEmployee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SysLog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -400,6 +418,9 @@
     <Compile Include="Repositories\SysDepartmentRepository.cs">
       <DependentUpon>Repository1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\SysEmployeeRepository.cs">
+      <DependentUpon>Repository1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\SysLogDetailRepository.cs">
       <DependentUpon>Repository1.tt</DependentUpon>
     </Compile>
@@ -450,6 +471,9 @@
     <Compile Include="Service\SysDepartmentService.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\SysEmployeeService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service\SysLogDetailService.cs">
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
@@ -493,6 +517,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Sys_Department.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sys_Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Sys_Log.cs">

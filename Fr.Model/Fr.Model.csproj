@@ -57,6 +57,7 @@
     <Compile Include="System\SysButtonPermission.cs" />
     <Compile Include="System\SysCompany.cs" />
     <Compile Include="System\SysDepartment.cs" />
+    <Compile Include="System\SysEmployee.cs" />
     <Compile Include="System\SysLog.cs" />
     <Compile Include="System\SysLogDetail.cs" />
     <Compile Include="System\SysMenu.cs" />

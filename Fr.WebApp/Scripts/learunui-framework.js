@@ -1,4 +1,16 @@
-﻿/**
+﻿(function($){
+    //work with jQuery 1.x  
+    $.prototype.serializeObject = function () {
+        var obj = new Object();
+        $.each(this.serializeArray(), function (index, param) {
+            if (!(param.name in obj)) {
+                obj[param.name] = param.value;
+            }
+        });
+        return obj;
+    };
+})(jQuery);
+/**
  * jQuery LeaRunUI 4.1
  *上海力软信息技术有限公司 Copyright © Learun 2014
  */
@@ -239,29 +251,30 @@ function CurrentTime() {
 自动获取页面控件值
 */
 function GetWebControls(element) {
-    var reVal = "";
-    $(element).find('input,select,textarea').each(function (r) {
-        var id = $(this).attr('id');
-        var value = $(this).val();
-        var type = $(this).attr('type');
-        switch (type) {
-            case "checkbox":
-                if ($(this).attr("checked")) {
-                    reVal += '"' + id + '"' + ':' + '"1",'
-                } else {
-                    reVal += '"' + id + '"' + ':' + '"0",'
-                }
-                break;
-            default:
-                if (value == "") {
-                    value = "&nbsp;";
-                }
-                reVal += '"' + id + '"' + ':' + '"' + $.trim(value) + '",'
-                break;
-        }
-    });
-    reVal = reVal.substr(0, reVal.length - 1);
-    return jQuery.parseJSON('{' + reVal + '}');
+    return 
+    //var reVal = "";
+    //$(element).find('input,select,textarea').each(function (r) {
+    //    var id = $(this).attr('id');
+    //    var value = $(this).val();
+    //    var type = $(this).attr('type');
+    //    switch (type) {
+    //        case "checkbox":
+    //            if ($(this).attr("checked")) {
+    //                reVal += '"' + id + '"' + ':' + '"1",'
+    //            } else {
+    //                reVal += '"' + id + '"' + ':' + '"0",'
+    //            }
+    //            break;
+    //        default:
+    //            if (value == "") {
+    //                value = "&nbsp;";
+    //            }
+    //            reVal += '"' + id + '"' + ':' + '"' + $.trim(value) + '",'
+    //            break;
+    //    }
+    //});
+    //reVal = reVal.substr(0, reVal.length - 1);
+    //return jQuery.parseJSON('{' + reVal + '}');
 }
 /*
 自动给控件赋值

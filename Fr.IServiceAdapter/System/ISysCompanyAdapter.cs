@@ -16,6 +16,10 @@ namespace Fr.IAdapter
     public interface ISysCompanyAdapter
     {
         List<SysCompanyDto> GetCompanyList();
-    
+
+
+        SysCompanyDto GetCompanyInfo(string keyId);
+
+        bool SaveCompanyInfo(string keyId,SysCompanyDto data);
     }
 }
