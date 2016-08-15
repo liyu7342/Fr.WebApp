@@ -30,7 +30,7 @@ namespace Fr.Service
 
         public List<Model.SysMenu> GetModuleList(List<string> roleIds)
         {
-            return   _repository.Source.Where(c => roleIds.Contains( c.RoleId) && c.Status==Model.StateEnum.启用).Select(c => c.SysMenu).Distinct().ToList();
+            return   _repository.Source.Where(c => roleIds.Contains( c.RoleId) && c.Status==Model.RecordStateEnum.启用).Select(c => c.SysMenu).Distinct().ToList();
         }
     }
 	

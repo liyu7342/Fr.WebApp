@@ -41,6 +41,9 @@ namespace Fr.Adapter
 
             Mapper.CreateMap<SysMenu, SysMenuDto>();
             Mapper.CreateMap<SysMenuDto, SysMenu>();
+
+            Mapper.CreateMap<SysCompany, SysCompanyDto>();
+            Mapper.CreateMap<SysCompanyDto, SysCompany>();
         }
 
         public static TResult ToModel<TResult>(this object entity)

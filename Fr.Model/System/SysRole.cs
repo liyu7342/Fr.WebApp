@@ -40,7 +40,7 @@ namespace Fr.Model
     	/// 状态
     	/// </summary>
     		
-    	public StateEnum Status { get; set; }
+    	public RecordStateEnum Status { get; set; }
     	/// <summary>
     	/// 创建时间
     	/// </summary>

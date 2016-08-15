@@ -6,17 +6,21 @@ using System.Threading.Tasks;
 
 namespace Fr.Model
 {
-    public enum UserStateEnum
+    public enum RecordStateEnum
     {
-        启用,
-        删除,
-        禁用
+        启用=0,
+        删除=1,
+        禁用=2
     }
 
 
-    public enum StateEnum
-    {
-        启用,
-        删除 
-    }
+    //public enum RecordStateEnum
+    //{
+    //    启用=0,
+
+    //    删除 =1,
+
+    //    禁用 = 2
+        
+    //}
 }

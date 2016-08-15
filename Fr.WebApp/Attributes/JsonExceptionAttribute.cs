@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fr.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,12 +12,12 @@ namespace Fr.WebApp
     {
         public override void OnException(ExceptionContext filterContext)
         {
-            if (!filterContext.ExceptionHandled && filterContext.Exception is ApplicationException)
+            if (!filterContext.ExceptionHandled && filterContext.Exception is Exception)
             {
                 //返回异常JSON
                 filterContext.Result = new JsonResult
                 {
-                    Data = new { success = false, message = filterContext.Exception.Message }
+                    Data = new JsonResponse { success = false, message = filterContext.Exception.Message }
                 };
             }
         }

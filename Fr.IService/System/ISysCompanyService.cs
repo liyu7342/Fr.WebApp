@@ -20,5 +20,7 @@ namespace Fr.IService
         SysCompany GetCompanyInfo(string keyId);
 
         bool SaveCompanyInfo(string keyId,SysCompany data);
+
+        void Delete(string keyId);
     }
 }

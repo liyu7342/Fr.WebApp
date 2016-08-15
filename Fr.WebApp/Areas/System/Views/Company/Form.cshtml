@@ -15,15 +15,16 @@
                 SetWebControls(data); 
             });
         } else {
-            //显示顺序
-            AjaxJson("/System/Company/SortCode", {}, function (Data) {
-                $("#SortCode").val(Data);
-            })
-            if (!!GetQuery('CompanyId')) {
-                $("#ParentId").val(GetQuery('CompanyId'));
-            } else {
-                $("#ParentId").val(0);
-            }
+            ////显示顺序
+            //AjaxJson("/System/Company/SortCode", {}, function (Data) {
+            //    $("#SortCode").val(Data);
+            //})
+            //if (!!GetQuery('CompanyId')) {
+            //    $("#ParentId").val(GetQuery('CompanyId'));
+            //} else {
+            //    $("#ParentId").val(0);
+            //}
+
         }
     }
     //保存事件
@@ -36,7 +37,7 @@
             var postData = $("#form1").serializeObject();
             //postData["BuildFormJson"] = JSON.stringify(GetWebControls("#CustomAttribute"));
             
-            AjaxJson("/System/Company/SubmitCompany?keyId=" + GetQuery('keyId'), postData, function (data) {
+            AjaxJson("/System/Company/Save?keyId=3cf8b68c636a4507afce05809342e914", postData, function (data) {
                 tipDialog(data.Message, 3, data.Code);
                 top.frames[tabiframeId()].windowload();
                 closeDialog();
@@ -64,13 +65,13 @@
                     </th>
                     <td class="formValue">
                         <input id="ParentId" type="hidden" />
-                        <input id="Code" type="text" class="txt required" datacol="yes" placeholder="公司编码" err="公司编码" checkexpession="NotNull" />
+                        <input id="Code" type="text" class="txt required" datacol="yes" name="Code" placeholder="公司编码" err="公司编码" checkexpession="NotNull" />
                     </td>
                     <th class="formTitle">
                         公司名称：
                     </th>
                     <td class="formValue">
-                        <input id="FullName" type="text" class="txt required" datacol="yes" placeholder="公司名称" err="公司名称" checkexpession="NotNull" />
+                        <input id="FullName" type="text" class="txt required" datacol="yes" name="CompanyName" placeholder="公司名称" err="公司名称" checkexpession="NotNull" />
                     </td>
                 </tr>
                 <tr>
@@ -78,13 +79,13 @@
                         公司简称：
                     </th>
                     <td class="formValue">
-                        <input id="ShortName" type="text" class="txt" placeholder="公司简称" />
+                        <input id="ShortName" type="text" name="ShortName" class="txt" placeholder="公司简称" />
                     </td>
                     <th class="formTitle">
                         公司分类：
                     </th>
                     <td class="formValue">
-                        <input id="Category" type="text" class="txt" placeholder="公司分类" err="公司分类" />
+                        <input id="Category" type="text" class="txt" placeholder="公司分类" name="Category" err="公司分类" />
                         @*<select id="Category" class="txtselect required" datacol="yes" err="公司分类" checkexpession="NotNull"></select>*@
                     </td>
                 </tr>
@@ -93,53 +94,53 @@
                         公司性质：
                     </th>
                     <td class="formValue">
-                        <input id="Nature" type="text" class="txt" placeholder="公司性质" err="公司性质" />
+                        <input id="Nature" type="text" class="txt" placeholder="公司性质" name="Nature" err="公司性质" />
                     </td>
                     <th class="formTitle">公司法人：</th>
                     <td class="formValue">
-                        <input id="Manager" type="text" class="txt" />
+                        <input id="Manager" type="text" class="txt" name="Manager" />
                     </td>
                 </tr>
                 <tr>
                     <th class="formTitle">联系人：</th>
                     <td class="formValue">
-                        <input id="Contact" type="text" class="txt" />
+                        <input id="Contact" type="text" class="txt" name="Contact" />
                     </td>
                     <th class="formTitle">联系电话：</th>
                     <td class="formValue">
-                        <input id="Phone" type="text" class="txt" />
+                        <input id="Phone" type="text" class="txt" name="Phone" />
                     </td>
                 </tr>
                 <tr>
                     <th class="formTitle">电子邮件：</th>
                     <td class="formValue">
-                        <input id="Email" type="text" class="txt" />
+                        <input id="Email" type="text" class="txt" name="Email" />
                     </td>
                     <th class="formTitle">传真：</th>
                     <td class="formValue">
-                        <input id="Fax" type="text" class="txt" />
+                        <input id="Fax" type="text" class="txt" name="Fax" />
                     </td>
                 </tr>
                 <tr>
                     <th class="formTitle">详细地址：</th>
                     <td class="formValue" colspan="3">
-                        <input id="Address" type="text" class="txt" />
+                        <input id="Address" type="text" class="txt" name="Address" />
                     </td>
                 </tr>
                 <tr>
                     <th class="formTitle">公司网址：</th>
                     <td class="formValue">
-                        <input id="Web" type="text" class="txt" />
+                        <input id="Web" type="text" class="txt" name="WebSite" />
                     </td>
                     <th class="formTitle">开户信息：</th>
                     <td class="formValue">
-                        <input id="AccountInfo" type="text" class="txt" />
+                        <input id="AccountInfo" type="text" class="txt" name="AccountInfo" />
                     </td>
                 </tr>
                 <tr>
                     <th class="formTitle">显示顺序：</th>
                     <td class="formValue">
-                        <input id="SortCode" type="text" onkeyup="IsNumber(this.id)" class="txt required" datacol="yes" err="显示顺序" checkexpession="Num" />
+                        <input id="SortCode" type="text" onkeyup="IsNumber(this.id)" name="SortCode" class="txt required" datacol="yes" err="显示顺序" checkexpession="Num" />
                     </td>
                     <th class="formTitle">选项：</th>
                     <td class="formValue">

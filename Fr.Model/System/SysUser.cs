@@ -69,8 +69,8 @@ namespace Fr.Model
     	/// <summary>
     	/// 状态
     	/// </summary>
-    		
-    	public UserStateEnum Status { get; set; }
+
+        public RecordStateEnum Status { get; set; }
     	/// <summary>
     	/// 创建时间
     	/// </summary>

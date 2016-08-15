@@ -80,8 +80,8 @@ namespace Fr.Model
     	/// <summary>
     	/// 
     	/// </summary>
-    		
-    	public StateEnum Status { get; set; }
+
+        public RecordStateEnum Status { get; set; }
     	/// <summary>
     	/// 
     	/// </summary>

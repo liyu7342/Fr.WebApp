@@ -40,6 +40,12 @@ namespace Fr.Adapter
         {
             return _service.SaveCompanyInfo(keyId,data.ToModel<SysCompany>()); 
         }
+
+
+        public void Delete(string keyId)
+        {
+             _service.Delete(keyId);
+        }
     }
 	
 }

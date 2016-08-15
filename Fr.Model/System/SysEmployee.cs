@@ -25,7 +25,7 @@ public partial class SysEmployee
 	/// <summary>
 	/// 
 	/// </summary>
-    [StringLength(50)]
+    [StringLength(50),Key]
 	public string EmployeeId { get; set; }
 
 	/// <summary>

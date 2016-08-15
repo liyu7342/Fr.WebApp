@@ -26,7 +26,7 @@ public partial class SysMenuPermission
 	/// 
 	/// </summary>
 	
-    [StringLength(50)]
+    [StringLength(50),Key]
 	
 	
 	public string MenuPermissionId { get; set; }
@@ -50,9 +50,9 @@ public partial class SysMenuPermission
 	/// <summary>
 	/// 
 	/// </summary>
-	
-	
-	public StateEnum Status { get; set; }
+
+
+    public RecordStateEnum Status { get; set; }
 
 	/// <summary>
 	/// 

@@ -21,5 +21,7 @@ namespace Fr.IAdapter
         SysCompanyDto GetCompanyInfo(string keyId);
 
         bool SaveCompanyInfo(string keyId,SysCompanyDto data);
+
+        void Delete(string keyId);
     }
 }

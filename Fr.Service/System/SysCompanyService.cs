@@ -17,59 +17,111 @@ namespace Fr.Service
     using System.Linq;
     using Fr.Model;
     using Fr.Utilily;
-    
-    public partial class SysCompanyService:ISysCompanyService
-    { 
-    	ISysCompanyRepository _repository ;
-    
-    	/// <summary>
-    	/// 构造函数注入
-    	/// </summary>
-    	/// <param name="repository"></param>
-    	public SysCompanyService(ISysCompanyRepository repository){
-    		_repository = repository;
-    	}
+
+    public partial class SysCompanyService : ISysCompanyService
+    {
+        ISysCompanyRepository _repository;
+
+        /// <summary>
+        /// 构造函数注入
+        /// </summary>
+        /// <param name="repository"></param>
+        public SysCompanyService(ISysCompanyRepository repository)
+        {
+            _repository = repository;
+        }
 
 
         public List<SysCompany> GetCompanyList()
         {
-            var source = _repository.Source.Where(c => c.Status != StateEnum.启用).OrderBy(c => c.CompanyName).ToList();
+            var source = _repository.Source.Where(c => c.Status == RecordStateEnum.启用).OrderBy(c => c.CompanyName).ToList();
             return source;
         }
 
-
+        /// <summary>
+        /// 获取公司信息
+        /// </summary>
+        /// <param name="keyId"></param>
+        /// <returns></returns>
         public SysCompany GetCompanyInfo(string keyId)
         {
-            var entity = _repository.Find(c => c.CompanyId == keyId && c.Status == StateEnum.启用).FirstOrDefault();
+            var entity = _repository.Find(c => c.CompanyId == keyId && c.Status == RecordStateEnum.启用).FirstOrDefault();
             return entity;
         }
 
-        public bool SaveCompanyInfo(string keyId,SysCompany data)
+        /// <summary>
+        /// 保存公司信息
+        /// </summary>
+        /// <param name="keyId"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public bool SaveCompanyInfo(string keyId, SysCompany data)
         {
-            if(data ==null || string.IsNullOrEmpty(data.CompanyId ))
-                throw new ArgumentNullException("参数错误");
             var user = SysUserHelper.CurrentUser;
-            if (string.IsNullOrEmpty(keyId))
+            SysCompany entity;
+            if (!string.IsNullOrEmpty(keyId))
             {
-                data.CreateTime = DateTime.Now;
-                data.CreateUserId = user.UserId;
-                data.CreateUserName = user.NickName;
-                data.ModifyTime = DateTime.Now;
-                data.ModifyUserId = user.UserId;
-                _repository.Insert(data);
+                entity = _repository.Find(c => c.CompanyId == keyId).FirstOrDefault();
+                if (entity != null)
+                {
+                    entity.ModifyTime = DateTime.Now;
+                    entity.ModifyUserId = user.UserId;
+                    entity.ModifyUserName = user.NickName;
+                    entity.Status = RecordStateEnum.启用;
+                }
             }
             else
             {
-                data.CompanyId = keyId;
-                data.ModifyUserId = user.UserId;
-                data.ModifyUserName = user.NickName;
-                data.ModifyTime = DateTime.Now;
-                _repository.Save(data);
+                entity = new SysCompany()
+                {
+                    CreateTime = DateTime.Now,
+                    CreateUserId = user.UserId,
+                    CreateUserName = user.NickName,
+                    ModifyTime = DateTime.Now,
+                    ModifyUserId = user.UserId,
+                    ModifyUserName = user.NickName,
+                    CompanyName = data.CompanyName,
+                    Status = RecordStateEnum.启用
+                };
+            }
+            entity.ParentId = data.ParentId;
+            entity.Remark = data.Remark;
+            entity.AccountInfo = data.AccountInfo;
+            entity.Adress = data.Adress;
+            entity.CompanyName = data.CompanyName;
+            entity.Contact = data.Contact;
+            entity.Email = data.Email;
+            entity.Fax = data.Fax;
+            entity.Manager = data.Manager;
+            entity.Nature = data.Nature;
+            entity.SortOrder = data.SortOrder;
+            if (string.IsNullOrEmpty(entity.CompanyId))
+            {
+                entity.CompanyId = Guid.NewGuid().ToString("N");
+                _repository.Insert(entity);
+            }
+            else
+            {
+                _repository.Save(entity);
             }
             return true;
         }
 
-                
-    }
-	
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="keyId"></param>
+        public void Delete(string keyId)
+        {
+            var entity = _repository.Find(c => c.CompanyId == keyId && c.Status == RecordStateEnum.启用).FirstOrDefault();
+            if (entity != null)
+            {
+                var hasChild = _repository.Find(c => c.ParentId == keyId && c.Status == RecordStateEnum.启用).Any();
+                if (hasChild)
+                    throw new Exception("拥有子公司，不允许删除！");
+                entity.Status = RecordStateEnum.删除;
+                _repository.Save(entity);
+            }
+        }
+    }	
 }

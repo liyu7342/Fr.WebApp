@@ -2,53 +2,49 @@
     ViewBag.Title = "公司管理";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
+<script src="~/Scripts/SysMain.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         GetGrid();
     });
     //加载表格
     function GetGrid() {
-        $.ajax({
+    
+        $("#gridTable").jqGrid({
             url: "@Url.Content("~/System/Company/GetCompanyList")",
-            datatype:"json",
-            success: function (result) {
-                if (result.success) {
-                    $("#gridTable").jqGrid({
-                        data:result.data,
-                        datatype: "json",
-                        treeGrid: true,
-                        treeGridModel: "nested",
-                        ExpandColumn: "Code",
-                        height: $(window).height() - 77,
-                        autowidth: true,
-                        colModel: [
-                        { label: '主键', name: 'CompanyId', index: 'CompanyId', width: 80, hidden: true },
-                        { label: "名称", name: "CompanyName", index: "FullName", width: 200 },
-                        { label: "编码", name: "Code", index: "Code", width: 100 },
-                        { label: "简称", name: "ShortName", index: "ShortName", width: 100 },
-                        { label: "分类", name: "Category", index: "Category", width: 50, align: "center" },
-                        { label: "联系人", name: "Contact", index: "Contact", width: 100 },
-                        { label: "电话", name: "Phone", index: "Phone", width: 100 },
-                        { label: "传真", name: "Fax", index: "Fax", width: 100 },
-                        {
-                            label: '有效', name: 'Enabled', index: 'Enabled', width: 45, align: 'center',
-                            formatter: function (cellvalue, options, rowObject) {
-                                if (cellvalue == '1') return "<img src='../../Content/Images/checkokmark.gif'/>";
-                                if (cellvalue == '0') return "<img src='../../Content/Images/checknomark.gif'/>";
-                            }
-                        },
-                        { label: '描述', name: 'Remark', index: 'Remark', width: 500 }
-                        ],
-                        pager: "false",
-                        rowNum: 1000,
-                        rownumbers: true,
-                        shrinkToFit: false
-                    });
+            datatype: "json",
+            treeGrid: true,
+            treeGridModel: "nested",
+            ExpandColumn: "CompanyName",
+            height: $(window).height() - 77,
+            autowidth: true,
+            loadComplete: function (data) {
+                return ArrayToTree(data.data, "CompanyId", "ParentId");
+            },
+            colModel: [
+            { label: '主键', name: 'CompanyId', index: 'CompanyId', width: 80, hidden: true },
+            { label: "名称", name: "CompanyName", index: "CompanyName", width: 200 },
+            { label: "编码", name: "Code", index: "Code", width: 100 },
+            //{ label: "简称", name: "ShortName", index: "ShortName", width: 100 },
+            { label: "分类", name: "Category", index: "Category", width: 50, align: "center" },
+            { label: "联系人", name: "Contact", index: "Contact", width: 100 },
+            { label: "电话", name: "Phone", index: "Phone", width: 100 },
+            { label: "传真", name: "Fax", index: "Fax", width: 100 },
+            {
+                label: '有效', name: 'Status', index: 'Status', width: 45, align: 'center',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (cellvalue == '0') return "<img src='../../Content/Images/checkokmark.gif'/>";
+                    if (cellvalue == '1') return "<img src='../../Content/Images/checknomark.gif'/>";
                 }
-            }
+            },
+            { label: '描述', name: 'Remark', index: 'Remark', width: 500 }
+            ],
+            pager: "false",
+            rowNum: 1000,
+            rownumbers: true,
+            shrinkToFit: false
         });
 
-        columnModelData("#gridTable");
     }
     //新增
     function btn_add() {
@@ -73,10 +69,10 @@
     }
     //删除
     function btn_delete() {
-        var KeyValue = GetJqGridRowValue("#gridTable", "CompanyId");
-        if (IsDelData(KeyValue)) {
-            var delparm = 'KeyValue=' + KeyValue + '&ParentId=' + KeyValue;
-            delConfig('/CommonModule/Company/DeleteCompany', delparm, KeyValue.split(",").length);
+        var keyId = GetJqGridRowValue("#gridTable", "CompanyId");
+        if (IsDelData(keyId)) {
+            var delparm = 'keyId=' + keyId;
+            delConfig('/CommonModule/Company/Delete', delparm);
         }
     }
     //刷新

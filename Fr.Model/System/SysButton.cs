@@ -76,7 +76,7 @@ namespace Fr.Model
     	/// 
     	/// </summary>
     		
-    	public StateEnum Status { get; set; }
+    	public RecordStateEnum Status { get; set; }
     	/// <summary>
     	/// 
     	/// </summary>
