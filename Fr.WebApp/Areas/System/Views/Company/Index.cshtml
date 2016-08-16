@@ -18,9 +18,6 @@
             ExpandColumn: "CompanyName",
             height: $(window).height() - 77,
             autowidth: true,
-            loadComplete: function (data) {
-                return ArrayToTree(data.data, "CompanyId", "ParentId");
-            },
             colModel: [
             { label: '主键', name: 'CompanyId', index: 'CompanyId', width: 80, hidden: true },
             { label: "名称", name: "CompanyName", index: "CompanyName", width: 200 },
